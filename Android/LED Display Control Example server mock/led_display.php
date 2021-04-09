@@ -15,7 +15,7 @@ function ledIndexToTag($x, $y) {
 }
 
 $ledDisplay = array();
-$ledDispleyTestFile = 'led_dipslay_test_file.json';
+$ledDispleyTestFile = 'led_display_test_file.json';
 
 $n = 0;
 
