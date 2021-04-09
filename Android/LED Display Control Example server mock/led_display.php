@@ -1,7 +1,7 @@
 <?php
 /**
  ******************************************************************************
- * @file    Data Grabber Example server mock/resource.php
+ * @file    LED Display Control Example server mock/led_display.php
  * @author  Adrian Wojcik
  * @version V1.0
  * @date    09-Apr-2020
