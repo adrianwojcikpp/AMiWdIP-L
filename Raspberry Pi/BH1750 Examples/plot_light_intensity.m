@@ -1,4 +1,4 @@
-%% Matrix multiplication unit test
+%% RESTful client example
 
 %%% File info 
 %
