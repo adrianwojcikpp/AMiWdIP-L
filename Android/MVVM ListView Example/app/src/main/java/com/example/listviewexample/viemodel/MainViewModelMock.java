@@ -70,4 +70,20 @@ public class MainViewModelMock extends ViewModel {
         measurements.set(3, random.toVM());
         adapter.notifyItemChanged(3);
     }
+
+    /**
+     * @brief URL getter method.
+     * @return Server resource URL
+     */
+    public String getUrl() {
+        return "http://mocskerver/measurements.php";
+    }
+
+    /**
+     * @brief URL setter method.
+     * @param url Server resource URL
+     */
+    public void setUrl(String url) {
+
+    }
 }

@@ -87,10 +87,18 @@ public class MainViewModel extends ViewModel {
         server.getMeasurements();
     }
 
+    /**
+     * @brief URL getter method.
+     * @return Server resource URL
+     */
     public String getUrl() {
         return server.getUrl();
     }
 
+    /**
+     * @brief URL setter method.
+     * @param url Server resource URL
+     */
     public void setUrl(String url) {
         server.setUrl(url);
     }
