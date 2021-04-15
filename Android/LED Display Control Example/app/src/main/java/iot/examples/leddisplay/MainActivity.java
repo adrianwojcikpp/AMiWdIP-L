@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     /* BEGIN colors */
 
     /* BEGIN request */
-    String url = "http://192.168.0.12/led_display.php";  ///< Default IoT server script URL
+    String url = "http://192.168.1.208/led_display.php";  ///< Default IoT server script URL
     private RequestQueue queue; ///< HTTP requests queue
     Map<String, String>  paramsClear = new HashMap<String, String>(); ///< HTTP POST data: clear display command
     /* END request */
