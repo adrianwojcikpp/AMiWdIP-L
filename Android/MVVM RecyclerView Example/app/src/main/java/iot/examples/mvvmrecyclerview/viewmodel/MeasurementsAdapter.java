@@ -1,6 +1,6 @@
 package iot.examples.mvvmrecyclerview.viewmodel;
 
-import iot.examples.mvvmrecyclerview.databinding.ItemMeasurementDataBinding; // Automatically generated class
+import iot.examples.mvvmrecyclerview.databinding.MeasurementViewBinding; // Automatically generated class
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -23,13 +23,13 @@ public class MeasurementsAdapter extends
         // our auto generated binding class is ItemMeasurementDataBinding.
         //
         // "underscores" to "Pascal case"
-        private ItemMeasurementDataBinding binding;
+        private MeasurementViewBinding binding;
 
         /**
          * @brief MeasurementViewHolder parametric constructor.
          * @param binding Data binding for single 'recyclerview' item.
          */
-        public MeasurementViewHolder(ItemMeasurementDataBinding binding) {
+        public MeasurementViewHolder(MeasurementViewBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -39,7 +39,7 @@ public class MeasurementsAdapter extends
          * @param measurement View model for single measurement item.
          */
         public void bind(MeasurementViewModel measurement) {
-            binding.setMeasurement(measurement);
+            binding.setMeasurementViewModel(measurement);
             binding.executePendingBindings();
         }
     }
@@ -59,7 +59,7 @@ public class MeasurementsAdapter extends
     @Override
     public MeasurementsAdapter.MeasurementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ItemMeasurementDataBinding itemBinding = ItemMeasurementDataBinding.inflate(layoutInflater, parent, false);
+        MeasurementViewBinding itemBinding = MeasurementViewBinding.inflate(layoutInflater, parent, false);
         return new MeasurementViewHolder(itemBinding);
     }
 
