@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/JavaScript examples</title>
+		<!-- Chart.js library -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script type="text/javascript" src="scripts/chart_example.js"></script>
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1>Simple chart example with Chart.js</h1>
+		<!-- Chart.js requires use of styles to set size! -->
+		<div style="height:10cm; width:15cm">
+			<canvas id="chart"></canvas>
+		</div>
+		<br>
+		<div>
+			<button id="addData" onclick="addRandData()">Add Random Data</button>
+			<button id="addData" onclick="removeData()" >Remove Data</button>
+		</div>
+	</body>
+
+</html>

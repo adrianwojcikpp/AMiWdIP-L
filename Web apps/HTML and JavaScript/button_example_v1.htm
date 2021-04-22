@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/JavaScript examples</title>
+		<script>
+		var buttonCounter = 0;
+		
+		function myOnClickMethod() {
+			buttonCounter += 1;
+			var paragraphDispText = "<b>Click counter: </b>" + buttonCounter.toString();
+			document.getElementById("paragraph").innerHTML = paragraphDispText;
+		}
+		</script>
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1>Simple button example: signle file</h1>
+		<button name="button" onclick="myOnClickMethod()">Click me</button>
+		<p id="paragraph"></p>
+	</body>
+
+</html>

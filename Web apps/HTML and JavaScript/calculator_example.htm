@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/JavaScript examples</title>
+		<script type="text/javascript" src="scripts/calculator_example.js"></script>
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1>Simple JavaScript calculator example</h1>
+		<output id="result">0</output>
+		<table>
+			<tr>
+				<td><button id="7" onClick="numpad(this.id)">7</button></td>
+				<td><button id="8" onClick="numpad(this.id)">8</button></td>
+				<td><button id="9" onClick="numpad(this.id)">9</button></td>
+				<td><button id="div"  onClick="arithmeticOperations(this.id)">/</button></td>
+			</tr>
+			<tr>
+				<td><button id="4" onClick="numpad(this.id)">4</button></td>
+				<td><button id="5" onClick="numpad(this.id)">5</button></td>
+				<td><button id="6" onClick="numpad(this.id)">6</button></td>
+				<td><button id="prod" onClick="arithmeticOperations(this.id)">*</button></td>
+			</tr>
+			<tr>
+				<td><button id="1" onClick="numpad(this.id)">1</button></td>
+				<td><button id="2" onClick="numpad(this.id)">2</button></td>
+				<td><button id="3" onClick="numpad(this.id)">3</button></td>
+				<td><button id="sub"  onClick="arithmeticOperations(this.id)">-</button></td>
+			</tr>
+			<tr>
+				<td><button onClick="clearResult()">C</button></td>
+				<td><button id="0" onClick="numpad(this.id)">0</button></td>
+				<td><button id="dot" onClick="numpad(this.id)">.</button></td>
+				<td><button id="add"  onClick="arithmeticOperations(this.id)">+</button></td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td><button onClick="getResult()">=</button></td>
+			</tr>
+		</table>
+	</body>
+
+</html>
