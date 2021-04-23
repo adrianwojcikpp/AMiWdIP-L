@@ -21,14 +21,22 @@
  *                     FALSE on success.
  */
 function debug_exec($cmd, &$stdout=null, &$result_code=null, &$stderr=null) {
+  
   $proc = proc_open($cmd,[
     1 => ['pipe','w'],
     2 => ['pipe','w'],
-  ],$pipes);
+  ], $pipes);
+  
   $stdout = stream_get_contents($pipes[1]);
   fclose($pipes[1]);
+  $stdout = explode(PHP_EOL, $stdout);
+  array_pop($stdout);
+  
   $stderr = stream_get_contents($pipes[2]);
   fclose($pipes[2]);
+  $stderr = explode(PHP_EOL, $stderr);
+  array_pop($stderr);
+  
   $result_code = proc_close($proc);
 }
 

@@ -49,9 +49,9 @@ $error = null;
 
 debug_exec($cli_app, $output, $result, $error);
 echo "\nReturned with status $result, output:\n";
-var_dump($output);
+print_r($output);
 echo "\nand error:\n";
-var_dump($error);
+print_r($error);
 
 echo "\n\n";
 
@@ -63,9 +63,9 @@ $error = null;
 
 debug_exec($cli_app_with_error, $output, $result, $error);
 echo "\nReturned with status $result, output:\n";
-var_dump($output);
+print_r($output);
 echo "\nand error:\n";
-var_dump($error);
+print_r($error);
 echo "\n";
 
 ?>
