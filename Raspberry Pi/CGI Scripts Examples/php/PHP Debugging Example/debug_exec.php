@@ -13,12 +13,12 @@
 /**
  * @brief System call execution with additional error output
  * @param[in]  cmd     The command that will be executed. 
- * @param[out] stdout  Returns a string with process output or FALSE 
+ * @param[out] stdout  Returns a string with process output or empty array 
  *                     on failure. 
  * @param[out] result  Returns the termination status of the process that 
  *                     was run. In case of an error then -1 is returned. 
  * @param[out] stderr  Returns a string with process error message or 
- *                     FALSE on success.
+ *                     empty array on success.
  */
 function debug_exec($cmd, &$stdout=null, &$result_code=null, &$stderr=null) {
   
