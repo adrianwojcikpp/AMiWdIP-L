@@ -1,18 +1,18 @@
-const sampleTimeSec = 0.1; 					///< sample time in sec
-const sampleTimeMsec = 1000*sampleTimeSec;	///< sample time in msec
-const maxSamplesNumber = 100;				///< maximum number of samples
+const sampleTimeSec = 0.1;                  ///< sample time in sec
+const sampleTimeMsec = 1000*sampleTimeSec;  ///< sample time in msec
+const maxSamplesNumber = 100;               ///< maximum number of samples
 
 var xdata; ///< x-axis labels array: time stamps
 var ydata; ///< y-axis data array: random value
 var lastTimeStamp; ///< most recent time stamp 
 
 var chartContext;  ///< chart context i.e. object that "owns" chart
-var chart; ///< Chart.js object
+var chart;         ///< Chart.js object
 
 var timer; ///< request timer
 
-const url = 'http://192.168.0.10/server/chartdata.json'; ///< server app with JSON API
-//const url = 'http://192.168.56.104/nocache/chartdata.json'
+const url = 'http://localhost/server mock/chartdata.json'; ///< server app with JSON API
+//const url = 'http://' + window.location.hostname + '/nocache/chartdata.json'
 
 /**
 * @brief Generate random value.

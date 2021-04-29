@@ -1,0 +1,1 @@
+Run Python script 'chartdata_randGen.py' in 'server mock' directory to continuously update 'chardata.json' file.

@@ -1,8 +1,6 @@
-const initUrlJson = 'http://192.168.0.10/server/chartdata.json'
-const initUrlPHP = 'http://192.168.0.10/server/serverscript.php'
+const initUrlJson = 'http://localhost/server mock/chartdata.json'
+const initUrlPHP  = 'http://localhost/server mock/chartdata.php'
 const requestMethod = [ajaxText, ajaxJSON, getPHP];
-
-//$.ajaxSetup({ cache: false });
 
 /**
 * @brief document onReady event handling

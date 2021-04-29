@@ -1,5 +1,5 @@
 const ServerIoT = new XMLHttpRequest();
-const initUrl = 'http://192.168.0.10/server/chartdata.json'
+const initUrl = 'http://localhost/server mock/chartdata.json'
 
 var errorCode;
 

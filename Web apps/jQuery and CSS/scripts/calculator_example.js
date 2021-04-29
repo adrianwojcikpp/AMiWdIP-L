@@ -1,13 +1,13 @@
-const resultOutputId = "result";		///< result output element ID
-var firstArg = null, secondArg = null;	///< arithmetic operation argumetns
-var activeOperation = null;				///< selected arithmetic operation 
-var operationSymbols = {				///< arithmetic operations display symbols
+const resultOutputId = "result";        ///< result output element ID
+var firstArg = null, secondArg = null;  ///< arithmetic operation argumetns
+var activeOperation = null;             ///< selected arithmetic operation 
+var operationSymbols = {                ///< arithmetic operations display symbols
 	div: "/", 
 	prod: "*", 
 	sub: "-", 
 	add: "+"
 }; 
-var operationFunctions = {				///< arithmetic operations lambda expressions
+var operationFunctions = {              ///< arithmetic operations lambda expressions
 	div:  (a,b) => {return (a/b);},
 	prod: (a,b) => {return (a*b);},
 	sub:  (a,b) => {return (a-b);},
