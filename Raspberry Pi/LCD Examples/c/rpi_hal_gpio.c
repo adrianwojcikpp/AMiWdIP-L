@@ -1,11 +1,16 @@
-/* blink.c
- *
- * Raspberry Pi GPIO example using sysfs interface.
- * Guillermo A. Amaral B. <g@maral.me>
- *
- * This file blinks GPIO 4 (P1-07) while reading GPIO 24 (P1_18).
- */
-
+/**
+  ******************************************************************************
+  * @file    rpi_hal_gpio.c
+  * @author  AW 
+  * @version V1.0
+  * @date    24-Apr-2021
+  * @brief   Raspberry Pi GPIO API example source file
+  *
+  ******************************************************************************
+  */
+  
+/* Includes ------------------------------------------------------------------*/
+#include "rpi_hal_gpio.h"
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -13,18 +18,24 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define IN  0
-#define OUT 1
+/* Typedef -------------------------------------------------------------------*/
 
-#define LOW  0
-#define HIGH 1
+/* Define --------------------------------------------------------------------*/
+#define GPIO_BUFFER_MAX 3
+#define GPIO_DIRECTION_MAX 35
+#define GPIO_VALUE_MAX 30
 
-#define PIN  24 /* P1-18 */
-#define POUT 4  /* P1-07 */
+/* Macro ---------------------------------------------------------------------*/
 
-#define BUFFER_MAX 3  
-#define DIRECTION_MAX 35
-#define VALUE_MAX 30
+/* Private variables ---------------------------------------------------------*/
+
+/* Public variables ----------------------------------------------------------*/
+
+/* Private function prototypes -----------------------------------------------*/
+
+/* Private function ----------------------------------------------------------*/
+
+/* Public function -----------------------------------------------------------*/
 
 int HAL_GPIO_ExportPin(int pin)
 {
@@ -58,7 +69,7 @@ int HAL_GPIO_UnexportPin(int pin)
   return 0;
 }
 
-int HAL_GPIO_SetPinDirection(int pin, int dir)
+int HAL_GPIO_SetPinDirection(int pin, GPIO_Direction dir)
 {
   static const char dir_str[2][]  = {"in", "out"};
   static const int dir_str_len[2] = {2, 3};
@@ -68,7 +79,7 @@ int HAL_GPIO_SetPinDirection(int pin, int dir)
   int fd = open(path, O_WRONLY);
   if(fd == -1) 
   {
-    fprintf(stderr, "Failed to open gpio direction for writing!\n");
+    fprintf(stderr, "Failed to open GPIO direction for writing!\n");
     return -1;
   }
 
@@ -82,14 +93,14 @@ int HAL_GPIO_SetPinDirection(int pin, int dir)
   return 0;
 }
 
-int HAL_GPIO_ReadPin(int pin)
+GPIO_PinState HAL_GPIO_ReadPin(int pin)
 {
   char path[VALUE_MAX];
   snprintf(path, VALUE_MAX, "/sys/class/gpio/gpio%d/value", pin);
   int fd = open(path, O_RDONLY);
   if fd == -1)
   {
-    fprintf(stderr, "Failed to open gpio value for reading!\n");
+    fprintf(stderr, "Failed to open GPIO value for reading!\n");
     return -1 ;
   }
 
@@ -110,7 +121,7 @@ int HAL_GPIO_ReadPin(int pin)
     return -1;
 }
 
-int HAL_GPIO_WritePin(int pin, int value)
+int HAL_GPIO_WritePin(int pin, GPIO_PinState value)
 {
   static const char values_str[] = {'0', '1'};
 
@@ -119,7 +130,7 @@ int HAL_GPIO_WritePin(int pin, int value)
   int fd = open(path, O_WRONLY);
   if (fd == -1) 
   {
-    fprintf(stderr, "Failed to open gpio value for writing!\n");
+    fprintf(stderr, "Failed to open GPIO value for writing!\n");
     return -1;
   }
 
@@ -131,46 +142,4 @@ int HAL_GPIO_WritePin(int pin, int value)
 
   close(fd);
   return 0;
-}
-
-int
-main(int argc, char *argv[])
-{
-  int repeat = 10;
-
-  /*
-   * Enable GPIO pins
-   */
-  if (-1 == GPIOExport(POUT) || -1 == GPIOExport(PIN))
-    return(1);
-
-  /*
-   * Set GPIO directions
-   */
-  if (-1 == GPIODirection(POUT, OUT) || -1 == GPIODirection(PIN, IN))
-    return(2);
-
-  do {
-    /*
-     * Write GPIO value
-     */
-    if (-1 == GPIOWrite(POUT, repeat % 2))
-      return(3);
-
-    /*
-     * Read GPIO value
-     */
-    printf("I'm reading %d in GPIO %d\n", GPIORead(PIN), PIN);
-
-    usleep(500 * 1000);
-  }
-  while (repeat--);
-
-  /*
-   * Disable GPIO pins
-   */
-  if (-1 == GPIOUnexport(POUT) || -1 == GPIOUnexport(PIN))
-    return(4);
-
-  return(0);
 }

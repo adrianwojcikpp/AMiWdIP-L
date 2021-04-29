@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/jQuery examples</title>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/getrequest_example_v2.js"></script>
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1>Simple HTTP GET request example: jQuery AJAX/GET</h1>
+		<div id="in">
+			<input id="url" type="text" size="50"></input>
+			<button id="btn">GET</button>
+			<select id="request">
+				<option value="0">AJAX/TEXT</option>
+				<option value="1">AJAX/JSON</option>
+				<option value="2">GET/PHP</option>
+			</select>
+		</div>
+		<br>
+		<div id="out">
+			<b>Server response:</b>
+			<br>
+			<output id="response"></output>
+			<br><br>
+			<b>JSON data:</b>
+			<br>
+			<output id="json"></output>
+		</div>
+	</body>
+
+</html>

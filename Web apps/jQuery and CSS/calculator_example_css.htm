@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/JavaScript/CSS (Boostrap) examples</title>
+		<!-- jQuery -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="scripts/calculator_example.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles/calculator_example_css.css">
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1 class="text-center h1custom">Simple JavaScript calculator example</h1>
+		<div id="calculator" class="container border border-primary rounded divcustom">
+		<output id="result" class="form-control outcustom" type="text">0</output>
+		<table class="tbcustom">
+			<tr>
+				<td><button id="7" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">7</button></td>
+				<td><button id="8" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">8</button></td>
+				<td><button id="9" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">9</button></td>
+				<td><button id="div"  onClick="arithmeticOperations(this.id)" type="button" class="btn btn-primary btncustom">/</button></td>
+			</tr>
+			<tr>
+				<td><button id="4" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">4</button></td>
+				<td><button id="5" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">5</button></td>
+				<td><button id="6" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">6</button></td>
+				<td><button id="prod" onClick="arithmeticOperations(this.id)" type="button" class="btn btn-primary btncustom">*</button></td>
+			</tr>
+				<td><button id="1" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">1</button></td>
+				<td><button id="2" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">2</button></td>
+				<td><button id="3" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">3</button></td>
+				<td><button id="sub"  onClick="arithmeticOperations(this.id)" type="button" class="btn btn-primary btncustom">-</button></td>
+			</tr>
+			<tr>
+				<td><button onClick="clearResult()" type="button" class="btn btn-primary btncustom" >C</button></td>
+				<td><button id="0" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">0</button></td>
+				<td><button id="dot" onClick="numpad(this.id)" type="button" class="btn btn-primary btncustom">.</button></td>
+				<td><button id="add"  onClick="arithmeticOperations(this.id)" type="button" class="btn btn-primary btncustom">+</button></td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td><button onClick="getResult()" type="button" class="btn btn-primary btncustom">=</button></td>
+			</tr>
+		</table>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>HTML/jQuery/CSS (Boostrap) examples</title>
+		<!-- jQuery -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function() {
+				$( "button" ).hover(
+				function() { /// mouse enters 
+					$("#paragraph").html("You're currently hover over " + $(this).html() + " button.");
+				},
+				function() { /// mouse leave
+					$("#paragraph").html("");
+				});
+			});
+		</script>
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1>Simple button example: Bootstrap</h1>
+		<button id="primary" type="button" class="btn btn-primary">Primary</button>
+		<button id="secondary" type="button" class="btn btn-secondary">Secondary</button>
+		<button id="success" type="button" class="btn btn-success">Success</button>
+		<button id="danger" type="button" class="btn btn-danger">Danger</button>
+		<button id="warning" type="button" class="btn btn-warning">Warning</button>
+		<button id="info" type="button" class="btn btn-info">Info</button>
+		<button id="light" type="button" class="btn btn-light">Light</button>
+		<button id="dark" type="button" class="btn btn-dark">Dark</button>
+		<button id="link" type="button" class="btn btn-link">Link</button>
+		<p class="lead" id="paragraph"></p>
+	</body>
+
+</html>
