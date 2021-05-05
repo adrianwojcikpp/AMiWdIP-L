@@ -1,0 +1,129 @@
+﻿<Window x:Class="DataGrabberExample.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:vm="clr-namespace:DataGrabberExample.ViewModel"
+        mc:Ignorable="d"
+        Title="Simple desktop data grabber" Height="450" Width="900">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Menu toggle button -->
+        <Button 
+            Grid.Row="0" Grid.Column="1"
+            x:Name="MenuBtn" Click="MenuBtn_Click"
+            Width="62" HorizontalAlignment="Left" Margin="15,5">
+            Menu
+        </Button>
+        <!-- Menu grid -->
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" 
+              x:Name="Menu"
+              Background="DarkCyan" Width="150" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Width="100" Margin="5" IsEnabled="False">CHART</Button>
+            <Button Grid.Row="1" Width="100" Margin="5" IsEnabled="False">DISPLAY</Button>
+        </Grid>
+        <!-- Timeseries linear plot -->
+        <oxy:PlotView x:Name="DataPlotView" 
+                      Grid.Row="1" Grid.Column="1"
+                      Margin="0,0,10,0" 
+                      Model="{Binding DataPlotModel}"/>
+        
+        <!-- Configuration: IoT server ip address and request sample time -->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Grid.Column="0" 
+                Margin="20,10,0,10" 
+                Text="IP address: " VerticalAlignment="Center"/>
+            <TextBox 
+                Grid.Column="1" 
+                Margin="0,10,0,10" 
+                Width="100" 
+                HorizontalAlignment="Left" 
+                Text="{Binding IpAddress}"/>
+            <TextBlock 
+                Grid.Column="2" 
+                Margin="0,10,0,10"  
+                Text="Sample time: " 
+                HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox 
+                Grid.Column="3" 
+                Margin="0,10,0,10" 
+                Width="50" 
+                HorizontalAlignment="Left" 
+                Text="{Binding SampleTime}"/>
+            <TextBlock
+                Grid.Column="4" 
+                Margin="0,10,20,10" 
+                Text=" ms"  
+                HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
+        <!-- Bottom button menu: start data acquisition / stop data acquisition / update configuration -->
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button 
+                Grid.Column="0"
+                Height="30" 
+                Width="150"
+                Margin="0,10,30,10" 
+                Command="{Binding StartButton}" 
+                CommandParameter="START"
+                HorizontalAlignment="Right">
+                START
+            </Button>
+            <Button 
+                Grid.Column="1" 
+                Height="30" 
+                Width="150" 
+                Margin="0,10,15,10" 
+                Command="{Binding StopButton}">
+                STOP
+            </Button>
+            <Button 
+                Grid.Column="2" 
+                Height="30"
+                Width="150" 
+                Margin="15,10,0,10" 
+                Command="{Binding UpdateConfigButton}" HorizontalAlignment="Left">
+                UPDATE CONFIG
+            </Button>
+            <Button 
+                Grid.Column="3" 
+                Height="30"
+                Width="150" 
+                Margin="30,10,0,10" 
+                Command="{Binding DefaultConfigButton}" HorizontalAlignment="Left">
+                DEFAULT CONFIG
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
