@@ -1,4 +1,4 @@
-﻿//#define CLIENT
+﻿#define CLIENT
 //#define GET
 #define DYNAMIC
 
