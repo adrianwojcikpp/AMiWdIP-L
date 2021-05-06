@@ -1,21 +1,15 @@
 ﻿#define CLIENT
-//#define GET
-#define DYNAMIC
+#define GET
+//#define DYNAMIC
 
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Net.Http;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace DataGrabberExample.ViewModel
 {

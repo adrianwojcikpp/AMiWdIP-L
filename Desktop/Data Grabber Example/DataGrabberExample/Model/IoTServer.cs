@@ -32,7 +32,7 @@ namespace DataGrabberExample.Model
          */
         private string GetScriptUrl()
         {
-            return "http://" + ip + "/server/serverscript.php";
+            return "http://" + ip + "/server/resource.php";
         }
 
         /**
@@ -77,7 +77,6 @@ namespace DataGrabberExample.Model
                     var result = await client.PostAsync(GetScriptUrl(), requestData);
                     // Read response content
                     responseText = await result.Content.ReadAsStringAsync();
-
                 }
             }
             catch (Exception e)

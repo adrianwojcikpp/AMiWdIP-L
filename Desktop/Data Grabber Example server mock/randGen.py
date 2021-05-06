@@ -1,3 +1,13 @@
+"""
+ ******************************************************************************
+ * @file    Data Grabber Example server mock/randGen.py
+ * @author  Adrian Wojcik
+ * @version V1.1
+ * @date    17-Apr-2021
+ * @brief   Simple IoT server mock: random signal
+ ******************************************************************************
+"""
+
 # generate random floating point values
 from random import seed
 from random import random
