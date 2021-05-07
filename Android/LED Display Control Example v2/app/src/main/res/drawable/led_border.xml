@@ -4,5 +4,7 @@
         android:radius="@dimen/ledCorner"/>
     <stroke
         android:width="@dimen/borderThickness"
-        android:color="#757575"/>
+        android:color="@color/ledIndBorder"/>
+    <solid
+        android:color="@color/ledIndBackground"/>
 </shape>

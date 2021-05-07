@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /* BEGIN LED table initialization: dynamic user interface handling */
-        ledDisplay = new LedDisplay(getResources().getColor(R.color.ledIndBackground));
+        ledDisplay = new LedDisplay(0x000000000);
         ///< LED display matrix table
         TableLayout ledTable = (TableLayout) findViewById(R.id.led_table);
         for(int y = 0; y < ledDisplay.SizeY; y++) {
@@ -186,7 +186,6 @@ public class MainActivity extends AppCompatActivity {
                 ledIndMarginLeftRight_px, ledIndMarginTopBottom_px);
         led.setLayoutParams(led_params);
         // Background color
-        //led.setBackgroundColor(getResources().getColor(R.color.ledIndBackground));
         led.setBackground(getResources().getDrawable(R.drawable.led_view));
 
         // OnClick method listener
@@ -247,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < ledDisplay.SizeX; i++) {
             for (int j = 0; j < ledDisplay.SizeY; j++) {
                 ledInd = tb.findViewWithTag(ledIndexToTag(i, j));
-                ledInd.setBackgroundColor(ledDisplay.OffColor);
+                setLedViewColor(ledInd, ledDisplay.OffColor);
             }
         }
 
@@ -268,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * @brief Send control request via Volley queue
-     * @param data Send button element
+     * @param data Control data in JSON format
      */
     public void jsonControlRequest(JSONArray data)
     {

@@ -1,0 +1,30 @@
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csprojAssemblyReference.cache
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\App.g.cs
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample_MarkupCompile.cache
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample_MarkupCompile.lref
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\bin\Debug\ButtonMatrixExample.exe.config
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\bin\Debug\ButtonMatrixExample.exe
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\bin\Debug\ButtonMatrixExample.pdb
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.g.resources
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.Properties.Resources.resources
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csproj.GenerateResource.cache
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csproj.CoreCompileInputs.cache
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.exe
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.pdb
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\View\MainWindow.g.cs
+C:\Users\AW\source\repos\ButtonMatrixExample\ButtonMatrixExample\obj\Debug\View\MainWindow.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csprojAssemblyReference.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\View\MainWindow.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\App.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\View\MainWindow.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csproj.GenerateResource.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\ButtonMatrixExample.csproj.CoreCompileInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\bin\Debug\LedDisplayExample.exe.config
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\bin\Debug\LedDisplayExample.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\bin\Debug\LedDisplayExample.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample_MarkupCompile.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample_MarkupCompile.lref
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample.g.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample.Properties.Resources.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\ButtonMatrixExample\obj\Debug\LedDisplayExample.pdb

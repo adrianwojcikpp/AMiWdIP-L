@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- HTML file head: web page metadata -->
+	<head>
+		<title>FIR example</title>
+		<link rel="shortcut icon" href="#" />
+		<!-- jQuery -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		
+		<!-- Chart.js library -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		
+		<script type="text/javascript" src="MyFirData.js"></script>
+		<script type="text/javascript" src="MyFir.js"></script>
+		<script type="text/javascript" src="ServerMock.js"></script>
+		<script type="text/javascript" src="ServerIoT.js"></script>
+		<script type="text/javascript" src="filter_example.js"></script> 
+		<link rel="stylesheet" type="text/css" href="filter_example.css">
+	</head>
+
+	<!-- HTML file body: web page content -->
+	<body>
+		<h1 class="text-center">Simple client-side data processing example</h1>
+		<div id="datagrabber" class="container border border-primary rounded datagrabber">
+			<ul class="nav">
+				<li><button id="start" type="button" class="btn btn-primary menuitem">Run FIR demo</button></li>
+				<li><div class="border border-primary rounded menuitem"><span>Sampling frequency: <span id="samplefreq"></span> Hz</span></div></li>
+				<li><div class="border border-primary rounded menuitem">
+					<span class="optionitem">
+					<input type="radio" name="op" id="op1" checked="checked"> Mock</input>
+					<input type="radio" name="op" id="op2"> Server</input>
+					<span>
+					</div>
+				</li>
+			</ul>
+			<div class="chartcontainer">
+				<canvas id="chart"></canvas>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -7,7 +7,6 @@ public class LedDisplay {
     public final int SizeX = 8;
     public final int SizeY = 8;
 
-    private int ActiveColorA; ///< Active color Alpha components
     private int ActiveColorR; ///< Active color Red components
     private int ActiveColorG; ///< Active color Green components
     private int ActiveColorB; ///< Active color Blue components
@@ -21,9 +20,9 @@ public class LedDisplay {
      */
     public LedDisplay(int offColor) {
         OffColor = offColor;
-        ActiveColorR = 0x00;
-        ActiveColorG = 0x00;
-        ActiveColorB = 0x00;
+        ActiveColorR = (offColor >> 16) & 0xff;
+        ActiveColorG = (offColor >> 8) & 0xff;;
+        ActiveColorB = offColor & 0xff;;
         clearModel();
     }
 
@@ -62,8 +61,8 @@ public class LedDisplay {
      * @return Active color in Int ARGB format
      */
     public int getActiveColor() {
-        return  (ActiveColorA & 0xff) << 24 | (ActiveColorR & 0xff) << 16 |
-                (ActiveColorG & 0xff) << 8 | (ActiveColorB & 0xff);
+        return  (getActiveColorA() & 0xff) << 24 | (ActiveColorR & 0xff) << 16 |
+                     (ActiveColorG & 0xff) <<  8 | (ActiveColorB & 0xff);
     }
 
     /**
@@ -80,7 +79,6 @@ public class LedDisplay {
      */
     public void setActiveColorR(int c) {
         ActiveColorR = c;
-        ActiveColorA = getActiveColorA();
     }
 
     /**
@@ -89,7 +87,6 @@ public class LedDisplay {
      */
     public void setActiveColorG(int c) {
         ActiveColorG = c;
-        ActiveColorA = getActiveColorA();
     }
 
     /**
@@ -98,7 +95,6 @@ public class LedDisplay {
      */
     public void setActiveColorB(int c) {
         ActiveColorB = c;
-        ActiveColorA = getActiveColorA();
     }
 
     /**
