@@ -20,15 +20,18 @@ namespace LedDisplayExample.ViewModel
     {
         #region Fields
 
-        private IoTServer server;
-        private Random rand = new Random();
-        private readonly Action<String, Color> setColorHandler;
+        private readonly Action<string, Color> setColorHandler;
         
-        public LedDisplay ledDisplay;
+        private LedDisplay ledDisplay;  //!< LED display model
+        private IoTServer server;       //!< IoT server model
 
         #endregion Fileds
 
         #region Properties
+
+        public int DisplaySizeX { get => ledDisplay.SizeX; }
+        public int DisplaySizeY { get => ledDisplay.SizeY; }
+        public Color DisplayOffColor { get => ledDisplay.OffColor; }
 
         public ButtonCommandWithParameter CommonButtonCommand { get; set; }
         public ButtonCommand SendRequestCommand { get; set; }
@@ -118,7 +121,7 @@ namespace LedDisplayExample.ViewModel
             setColorHandler = handler;
             CommonButtonCommand = new ButtonCommandWithParameter(SetButtonColor);
             SendRequestCommand = new ButtonCommand(SendControlRequest);
-            SendClearCommand = new ButtonCommand(SendClearRequest);
+            SendClearCommand = new ButtonCommand(ClearDisplay);
 
             server = new IoTServer("localhost");
         }
@@ -126,19 +129,9 @@ namespace LedDisplayExample.ViewModel
         #region Methods
 
         /**
-         * @brief TODO
-         * @param x 
-         * @param y
-         */
-        public string LedIndexToTag(int i, int j)
-        {
-            return "LED" + i.ToString() + j.ToString();
-        }
-
-        /**
-         * @brief TODO
-         * @param name
-         * @return
+         * @brief Conversion method: LED indicator Name to LED x-y position
+         * @param name LED indicator Button Name propertie 
+         * @return Tuple with LED x-y position (0=x, 1=y)
          */
         public (int, int) LedTagToIndex(string name)
         {
@@ -146,25 +139,28 @@ namespace LedDisplayExample.ViewModel
         }
 
         /**
-         * @brief TODO
-         * @param parameter
+         * @brief Conversion method: LED x-y position to LED indicator Name
+         * @param x LED horizontal position in display
+         * @param y LED vertical position in display
+         * @return LED indicator Button Name property
          */
-        private void SetButtonColor(string parameter)
+        public string LedIndexToTag(int i, int j)
         {
-            (int x, int y) = LedTagToIndex(parameter);
-            ledDisplay.UpdateModel(x, y);
-            setColorHandler(parameter, SelectedColor.Color);
+            return "LED" + i.ToString() + j.ToString();
         }
 
         /**
-         * @brief TODO
+         * @brief LED indicator Click event handling procedure
+         * @param parameter LED indicator Button Name property
          */
-        private void ClearDisplay()
+        private void SetButtonColor(string parameter)
         {
-            ledDisplay.ClearModel();
-            for (int i = 0; i < ledDisplay.SizeX; i++)
-                for (int j = 0; j < ledDisplay.SizeY; j++)
-                    setColorHandler(LedIndexToTag(i, j), ledDisplay.OffColor);
+            // Set active color as background
+            setColorHandler(parameter, SelectedColor.Color);
+            // Find element x-y position
+            (int x, int y) = LedTagToIndex(parameter);
+            // Update LED display data model
+            ledDisplay.UpdateModel(x, y);
         }
 
         /**
@@ -178,9 +174,17 @@ namespace LedDisplayExample.ViewModel
         /**
          * @brief TODO
          */
-        private async void SendClearRequest()
+        private async void ClearDisplay()
         {
-            ClearDisplay();
+            // Clear LED display GUI
+            for (int i = 0; i < ledDisplay.SizeX; i++)
+                for (int j = 0; j < ledDisplay.SizeY; j++)
+                    setColorHandler(LedIndexToTag(i, j), ledDisplay.OffColor);
+
+            // Clear LED display data model
+            ledDisplay.ClearModel();
+
+            // Clear physical LED display
             await server.PostControlRequest(ledDisplay.getClearPostData());
         }
 

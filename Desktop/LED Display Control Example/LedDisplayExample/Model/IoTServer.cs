@@ -27,14 +27,15 @@ namespace LedDisplayExample.Model
 
         /**
          * @brief obtaining the address of the PHP script from IoT server IP.
+         * @return LED display control script URL
          */
-        private string GetScriptUrl()
+        public string ScriptUrl
         {
-            return "http://" + ip + "/server/led_display.php";
+            get => "http://" + ip + "/server/led_display.php";
         }
 
         /**
-         * @brief Send control request using HttpClient
+         * @brief Send control request using HttpClient with POST method
          * @param data Control data in JSON format
          */
         public async Task<string> PostControlRequest(List<KeyValuePair<string, string>> data)
@@ -47,7 +48,7 @@ namespace LedDisplayExample.Model
                 {
                     var requestData = new FormUrlEncodedContent(data);
                     // Sent POST request
-                    var result = await client.PostAsync(GetScriptUrl(), requestData);
+                    var result = await client.PostAsync(ScriptUrl, requestData);
                     // Read response content
                     responseText = await result.Content.ReadAsStringAsync();
                 }

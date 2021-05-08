@@ -33,21 +33,21 @@ namespace LedDisplayExample.View
             DataContext = viewmodel;
 
             /* Button matrix grid definition */
-            for (int i = 0; i < viewmodel.ledDisplay.SizeX; i++)
+            for (int i = 0; i < viewmodel.DisplaySizeX; i++)
             {
                 ButtonMatrixGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 ButtonMatrixGrid.ColumnDefinitions[i].Width = new GridLength(1, GridUnitType.Star);
             }
 
-            for (int i = 0; i < viewmodel.ledDisplay.SizeY; i++)
+            for (int i = 0; i < viewmodel.DisplaySizeY; i++)
             {
                 ButtonMatrixGrid.RowDefinitions.Add(new RowDefinition());
                 ButtonMatrixGrid.RowDefinitions[i].Height = new GridLength(1, GridUnitType.Star);
             }
 
-            for (int i = 0; i < viewmodel.ledDisplay.SizeX; i++)
+            for (int i = 0; i < viewmodel.DisplaySizeX; i++)
             {
-                for (int j = 0; j < viewmodel.ledDisplay.SizeY; j++)
+                for (int j = 0; j < viewmodel.DisplaySizeY; j++)
                 {
                     // <Button
                     Button led = new Button()
@@ -59,7 +59,7 @@ namespace LedDisplayExample.View
                         // Style="{StaticResource LedButtonStyle}"
                         Style = (Style)FindResource("LedButtonStyle"),
                         // Bacground="{StaticResource ... }"
-                        Background = new SolidColorBrush(viewmodel.ledDisplay.OffColor),
+                        Background = new SolidColorBrush(viewmodel.DisplayOffColor),
                         // BorderThicness="2"
                         BorderThickness = new Thickness(2),
                     };

@@ -17,7 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -26,47 +25,37 @@ import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-
-import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
     private LedDisplay ledDisplay;  ///< LED display model
+    private IoTServer server;       ///< IoT server model
 
     /* BEGIN widgets */
     private View colorView;       ///< Color preview
     private EditText urlText;     ///< Input for IoT server script URL
     /* END widgets */
 
-    /* BEGIN request */
-    private String url = "http://10.0.2.2/led_display_put.php";  ///< Default IoT server script URL
-    private RequestQueue queue; ///< HTTP requests queue
-    /* END request */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* BEGIN IoT server configuration */
+        server = new IoTServer("10.0.2.2", this);
+        /* END IoT server configuration */
+
         /* BEGIN LED table initialization: dynamic user interface handling */
         ledDisplay = new LedDisplay(0x000000000);
         ///< LED display matrix table
         TableLayout ledTable = (TableLayout) findViewById(R.id.led_table);
-        for(int y = 0; y < ledDisplay.SizeY; y++) {
+        for(int y = 0; y < ledDisplay.sizeY; y++) {
             //
             TableRow ledRow = new TableRow(this);
             ledRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.MATCH_PARENT));
-            for (int x = 0; x < ledDisplay.SizeX; x++)
+            for (int x = 0; x < ledDisplay.sizeX; x++)
                 ledRow.addView(addLedIndicatorToTableLayout(x, y));
             ledTable.addView(ledRow);
         }
@@ -76,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
         colorView = findViewById(R.id.colorView);
 
         urlText = findViewById(R.id.urlText);
-        urlText.setText(url);
+        urlText.setText(server.getScriptUrl());
 
-        /* BEGIN widgets */
+        /* BEGIN seek bars */
         SeekBar redSeekBar = (SeekBar) findViewById(R.id.seekBarR);
         redSeekBar.setMax(255);
         redSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -120,24 +109,21 @@ public class MainActivity extends AppCompatActivity {
                 setLedViewColor(colorView, ledDisplay.getActiveColor());
             }
         });
+        /* END seek bars
         /* END widgets initialization */
-
-        /* BEGIN 'Volley' request queue initialization */
-        queue = Volley.newRequestQueue(this);
-        /* END 'Volley' request queue initialization */
     }
 
     /**
      * @brief Conversion method: LED indicator Tag to LED x-y position
      * @param tag LED indicator View element Tag
-     * @return Two-element vector with LED x-y position [0=x, 1=y]
+     * @return Two-element array with LED x-y position [0=x, 1=y]
      */
-    private Vector<Integer> ledTagToIndex(String tag) {
+    private int[] ledTagToIndex(String tag) {
         // Tag: 'LEDxy"
-        Vector<Integer> vec = new Vector<>(2);
-        vec.add(0, Character.getNumericValue(tag.charAt(3)));
-        vec.add(1, Character.getNumericValue(tag.charAt(4)));
-        return vec;
+        return new int[]{
+                Character.getNumericValue(tag.charAt(3)),
+                Character.getNumericValue(tag.charAt(4))
+        };
     }
 
     /**
@@ -226,12 +212,9 @@ public class MainActivity extends AppCompatActivity {
             // Set active color as background
             setLedViewColor(v, ledDisplay.getActiveColor());
             // Find element x-y position
-            String tag = (String)v.getTag();
-            Vector<Integer> index = ledTagToIndex(tag);
-            int x = (int)index.get(0);
-            int y = (int)index.get(1);
+            int[] pos = ledTagToIndex((String)v.getTag());
             // Update LED display data model
-            ledDisplay.updateModel(x,y);
+            ledDisplay.updateModel(pos[0],pos[1]);
         }
     };
 
@@ -239,14 +222,14 @@ public class MainActivity extends AppCompatActivity {
      * @brief Clear button onClick event handling procedure
      * @param v Clear button element
      */
-    public void clearAllLed(View v) {
+    public void clearDisplay(View v) {
         // Clear LED display GUI
         TableLayout tb = (TableLayout)findViewById(R.id.led_table);
         View ledInd;
-        for(int i = 0; i < ledDisplay.SizeX; i++) {
-            for (int j = 0; j < ledDisplay.SizeY; j++) {
+        for(int i = 0; i < ledDisplay.sizeX; i++) {
+            for (int j = 0; j < ledDisplay.sizeY; j++) {
                 ledInd = tb.findViewWithTag(ledIndexToTag(i, j));
-                setLedViewColor(ledInd, ledDisplay.OffColor);
+                setLedViewColor(ledInd, ledDisplay.offColor);
             }
         }
 
@@ -254,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
         ledDisplay.clearModel();
 
         // Clear physical LED display
-        jsonControlRequest(ledDisplay.getControlJsonArray());
+        server.putControlRequest(ledDisplay.getControlJsonArray());
     }
 
     /**
@@ -262,38 +245,6 @@ public class MainActivity extends AppCompatActivity {
      * @param v Send button element
      */
     public void sendControlRequest(View v) {
-        jsonControlRequest(ledDisplay.getControlJsonArray());
-    }
-
-    /**
-     * @brief Send control request via Volley queue
-     * @param data Control data in JSON format
-     */
-    public void jsonControlRequest(JSONArray data)
-    {
-        url = urlText.getText().toString();
-        JsonArrayRequest putRequest = new JsonArrayRequest(Request.Method.PUT, url, data,
-                new Response.Listener<JSONArray>()
-                {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        // response
-                        Log.d("Response", response.toString());
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
-        );
-
-        putRequest.setRetryPolicy(new DefaultRetryPolicy(5000, 0,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        queue.add(putRequest);
+        server.putControlRequest(ledDisplay.getControlJsonArray());
     }
 }

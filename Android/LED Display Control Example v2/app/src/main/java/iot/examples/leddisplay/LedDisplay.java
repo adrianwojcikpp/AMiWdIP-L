@@ -1,28 +1,38 @@
+/**
+ ******************************************************************************
+ * @file    LED Display Control Example/LedDisplay.java
+ * @author  Adrian Wojcik
+ * @version V1.1
+ * @date    04-May-2021
+ * @brief   LED display controller: LED display model
+ ******************************************************************************
+ */
+
 package iot.examples.leddisplay;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class LedDisplay {
-    public final int SizeX = 8;
-    public final int SizeY = 8;
+    public final int sizeX = 8;
+    public final int sizeY = 8;
 
-    private int ActiveColorR; ///< Active color Red components
-    private int ActiveColorG; ///< Active color Green components
-    private int ActiveColorB; ///< Active color Blue components
+    private int activeColorR; ///< Active color Red components
+    private int activeColorG; ///< Active color Green components
+    private int activeColorB; ///< Active color Blue components
 
-    public final int OffColor;       ///< 'LED-is-off' color in Int ARGB format
+    public final int offColor;       ///< 'LED-is-off' color in Int ARGB format
 
-    private final Integer[][][] Model = new Integer[SizeY][SizeX][3]; ///< LED display data model
+    private final Integer[][][] model = new Integer[sizeY][sizeX][3]; ///< LED display data model
 
     /**
      * @brief Default constructor
      */
-    public LedDisplay(int offColor) {
-        OffColor = offColor;
-        ActiveColorR = (offColor >> 16) & 0xff;
-        ActiveColorG = (offColor >> 8) & 0xff;;
-        ActiveColorB = offColor & 0xff;;
+    public LedDisplay(int _offColor) {
+        offColor = _offColor;
+        activeColorR = (offColor >> 16) & 0xff;
+        activeColorG = (offColor >> 8) & 0xff;;
+        activeColorB = offColor & 0xff;;
         clearModel();
     }
 
@@ -37,9 +47,9 @@ public class LedDisplay {
         try {
             array.put(0, x);
             array.put(1, y);
-            array.put(2, Model[x][y][0]);
-            array.put(3, Model[x][y][1]);
-            array.put(4, Model[x][y][2]);
+            array.put(2, model[x][y][0]);
+            array.put(3, model[x][y][1]);
+            array.put(4, model[x][y][2]);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -53,7 +63,7 @@ public class LedDisplay {
      * @return False if color is Null; True otherwise
      */
     private boolean colorNotNull(int x, int y) {
-        return !((Model[x][y][0]==null)||(Model[x][y][1]==null)||(Model[x][y][2]==null));
+        return !((model[x][y][0]==null)||(model[x][y][1]==null)||(model[x][y][2]==null));
     }
 
     /**
@@ -61,8 +71,8 @@ public class LedDisplay {
      * @return Active color in Int ARGB format
      */
     public int getActiveColor() {
-        return  (getActiveColorA() & 0xff) << 24 | (ActiveColorR & 0xff) << 16 |
-                     (ActiveColorG & 0xff) <<  8 | (ActiveColorB & 0xff);
+        return  (getActiveColorA() & 0xff) << 24 | (activeColorR & 0xff) << 16 |
+                     (activeColorG & 0xff) <<  8 | (activeColorB & 0xff);
     }
 
     /**
@@ -70,7 +80,7 @@ public class LedDisplay {
      * @return Alpha channel value
      */
     private int getActiveColorA() {
-        return (ActiveColorR+ActiveColorG+ActiveColorB)/3;
+        return (activeColorR + activeColorG + activeColorB)/3;
     }
 
     /**
@@ -78,7 +88,7 @@ public class LedDisplay {
      * @param c Input color value
      */
     public void setActiveColorR(int c) {
-        ActiveColorR = c;
+        activeColorR = c;
     }
 
     /**
@@ -86,7 +96,7 @@ public class LedDisplay {
      * @param c Input color value
      */
     public void setActiveColorG(int c) {
-        ActiveColorG = c;
+        activeColorG = c;
     }
 
     /**
@@ -94,7 +104,7 @@ public class LedDisplay {
      * @param c Input color value
      */
     public void setActiveColorB(int c) {
-        ActiveColorB = c;
+        activeColorB = c;
     }
 
     /**
@@ -103,20 +113,20 @@ public class LedDisplay {
      * @param y LED vertical position in display
      */
     public void updateModel(int x, int y) {
-        Model[x][y][0] = ActiveColorR;
-        Model[x][y][1] = ActiveColorG;
-        Model[x][y][2] = ActiveColorB;
+        model[x][y][0] = activeColorR;
+        model[x][y][1] = activeColorG;
+        model[x][y][2] = activeColorB;
     }
 
     /**
      * @brief LED display data model clear - fill with all components with Null
      */
     public void clearModel() {
-        for(int i = 0; i < SizeX; i++) {
-            for (int j = 0; j < SizeY; j++) {
-                Model[i][j][0] = null;
-                Model[i][j][1] = null;
-                Model[i][j][2] = null;
+        for(int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                model[i][j][0] = null;
+                model[i][j][1] = null;
+                model[i][j][2] = null;
             }
         }
     }
@@ -128,8 +138,8 @@ public class LedDisplay {
     public JSONArray getControlJsonArray() {
         int led_n = 0;
         JSONArray jsonArray = new JSONArray();
-        for(int i = 0; i < SizeX; i++) {
-            for (int j = 0; j < SizeY; j++) {
+        for(int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
                 if(colorNotNull(i,j)) {
                     try {
                         jsonArray.put(led_n, indexToJsonArray(i, j));
