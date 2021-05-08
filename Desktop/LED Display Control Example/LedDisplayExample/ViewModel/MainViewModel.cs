@@ -11,7 +11,6 @@
 using LedDisplayExample.Model;
 using System;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Media;
 
 namespace LedDisplayExample.ViewModel
@@ -164,15 +163,7 @@ namespace LedDisplayExample.ViewModel
         }
 
         /**
-         * @brief TODO
-         */
-        private async void SendControlRequest()
-        {
-            await server.PostControlRequest(ledDisplay.getControlPostData());
-        }
-
-        /**
-         * @brief TODO
+         * @brief Clear button Click event handling procedure
          */
         private async void ClearDisplay()
         {
@@ -186,6 +177,14 @@ namespace LedDisplayExample.ViewModel
 
             // Clear physical LED display
             await server.PostControlRequest(ledDisplay.getClearPostData());
+        }
+
+        /**
+         * @brief Send button Click event handling procedure
+         */
+        private async void SendControlRequest()
+        {
+            await server.PostControlRequest(ledDisplay.getControlPostData());
         }
 
         #endregion Methods

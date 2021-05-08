@@ -38,7 +38,7 @@ public class IoTServer {
      * @return LED display control script URL
      */
     public String getScriptUrl() {
-        return "http://" + ip + "/server/led_display_put.php";
+        return "http://" + ip + "/server/led_display.php";
     }
 
     /**
