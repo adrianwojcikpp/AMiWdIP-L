@@ -25,12 +25,10 @@ import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import com.android.volley.toolbox.Volley;
-
 public class MainActivity extends AppCompatActivity {
 
-    private LedDisplayModel ledDisplay;         ///< LED display model
-    private LedModel ledPreview;                ///< LED color preview
+    private LedDisplayModel disp;               ///< LED display model
+    private LedModel preview;                ///< LED color preview
     private final int nullColor = 0x00000000;   ///< Disabled LED color
     private IoTServer server;                   ///< IoT server model
 
@@ -49,16 +47,16 @@ public class MainActivity extends AppCompatActivity {
         /* END IoT server configuration */
 
         /* BEGIN LED table initialization: dynamic user interface handling */
-        ledDisplay = new LedDisplayModel();
-        ledPreview = new LedModel();
+        disp = new LedDisplayModel();
+        preview = new LedModel();
         ///< LED display matrix table
         TableLayout ledTable = (TableLayout) findViewById(R.id.led_table);
-        for(int y = 0; y < ledDisplay.sizeY; y++) {
+        for(int y = 0; y < disp.sizeY; y++) {
             //
             TableRow ledRow = new TableRow(this);
             ledRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.MATCH_PARENT));
-            for (int x = 0; x < ledDisplay.sizeX; x++)
+            for (int x = 0; x < disp.sizeX; x++)
                 ledRow.addView(addLedIndicatorToTableLayout(x, y));
             ledTable.addView(ledRow);
         }
@@ -80,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledPreview.R = progressChangedValue;
-                setLedViewColor(colorView, ledPreview.getColor());
+                preview.R = progressChangedValue;
+                setLedViewColor(colorView, preview.getColor());
             }
         });
 
@@ -94,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledPreview.G = progressChangedValue;
-                setLedViewColor(colorView, ledPreview.getColor());
+                preview.G = progressChangedValue;
+                setLedViewColor(colorView, preview.getColor());
             }
         });
 
@@ -108,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledPreview.B = progressChangedValue;
-                setLedViewColor(colorView, ledPreview.getColor());
+                preview.B = progressChangedValue;
+                setLedViewColor(colorView, preview.getColor());
             }
         });
         /* END seek bars
@@ -213,11 +211,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // Set active color as background
-            setLedViewColor(v, ledPreview.getColor());
+            setLedViewColor(v, preview.getColor());
             // Find element x-y position
             int[] pos = ledTagToIndex((String)v.getTag());
             // Update LED display data model
-            ledDisplay.setLedModel(pos[0],pos[1], ledPreview);
+            disp.setLedModel(pos[0],pos[1], preview);
         }
     };
 
@@ -229,18 +227,18 @@ public class MainActivity extends AppCompatActivity {
         // Clear LED display GUI
         TableLayout tb = (TableLayout)findViewById(R.id.led_table);
         View ledInd;
-        for(int i = 0; i < ledDisplay.sizeX; i++) {
-            for (int j = 0; j < ledDisplay.sizeY; j++) {
+        for(int i = 0; i < disp.sizeX; i++) {
+            for (int j = 0; j < disp.sizeY; j++) {
                 ledInd = tb.findViewWithTag(ledIndexToTag(i, j));
                 setLedViewColor(ledInd, nullColor);
             }
         }
 
         // Clear LED display data model
-        ledDisplay.clearModel();
+        disp.clearModel();
 
         // Clear physical LED display
-        server.putControlRequest(ledDisplay.getControlJsonArray());
+        server.putControlRequest(disp.getControlJsonArray());
     }
 
     /**
@@ -248,6 +246,6 @@ public class MainActivity extends AppCompatActivity {
      * @param v Send button element
      */
     public void sendControlRequest(View v) {
-        server.putControlRequest(ledDisplay.getControlJsonArray());
+        server.putControlRequest(disp.getControlJsonArray());
     }
 }

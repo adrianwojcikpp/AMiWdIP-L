@@ -39,16 +39,6 @@ public class LedDisplayModel {
     }
 
     /**
-     * @brief Null color check
-     * @param x LED horizontal position in display
-     * @param y LED vertical position in display
-     * @return False if color is Null; True otherwise
-     */
-    private boolean ColorNotNull(int x, int y) {
-        return !((model[x][y].R == null) || (model[x][y].G == null) || (model[x][y].B == null));
-    }
-
-    /**
      * @brief LED display data model clear - fill with all components with Null
      */
     public void clearModel() {
