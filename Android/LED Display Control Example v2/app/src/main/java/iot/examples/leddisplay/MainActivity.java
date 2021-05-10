@@ -29,8 +29,10 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LedDisplay ledDisplay;  ///< LED display model
-    private IoTServer server;       ///< IoT server model
+    private LedDisplayModel ledDisplay;         ///< LED display model
+    private LedModel ledPreview;                ///< LED color preview
+    private final int nullColor = 0x00000000;   ///< Disabled LED color
+    private IoTServer server;                   ///< IoT server model
 
     /* BEGIN widgets */
     private View colorView;       ///< Color preview
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         /* END IoT server configuration */
 
         /* BEGIN LED table initialization: dynamic user interface handling */
-        ledDisplay = new LedDisplay(0x000000000);
+        ledDisplay = new LedDisplayModel();
+        ledPreview = new LedModel();
         ///< LED display matrix table
         TableLayout ledTable = (TableLayout) findViewById(R.id.led_table);
         for(int y = 0; y < ledDisplay.sizeY; y++) {
@@ -77,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledDisplay.setActiveColorR(progressChangedValue);
-                setLedViewColor(colorView, ledDisplay.getActiveColor());
+                ledPreview.R = progressChangedValue;
+                setLedViewColor(colorView, ledPreview.getColor());
             }
         });
 
@@ -91,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledDisplay.setActiveColorG(progressChangedValue);
-                setLedViewColor(colorView, ledDisplay.getActiveColor());
+                ledPreview.G = progressChangedValue;
+                setLedViewColor(colorView, ledPreview.getColor());
             }
         });
 
@@ -105,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onStartTrackingTouch(SeekBar seekBar) {/* Auto-generated method stub */ }
             public void onStopTrackingTouch(SeekBar seekBar) {
-                ledDisplay.setActiveColorB(progressChangedValue);
-                setLedViewColor(colorView, ledDisplay.getActiveColor());
+                ledPreview.B = progressChangedValue;
+                setLedViewColor(colorView, ledPreview.getColor());
             }
         });
         /* END seek bars
@@ -210,11 +213,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // Set active color as background
-            setLedViewColor(v, ledDisplay.getActiveColor());
+            setLedViewColor(v, ledPreview.getColor());
             // Find element x-y position
             int[] pos = ledTagToIndex((String)v.getTag());
             // Update LED display data model
-            ledDisplay.updateModel(pos[0],pos[1]);
+            ledDisplay.setLedModel(pos[0],pos[1], ledPreview);
         }
     };
 
@@ -229,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < ledDisplay.sizeX; i++) {
             for (int j = 0; j < ledDisplay.sizeY; j++) {
                 ledInd = tb.findViewWithTag(ledIndexToTag(i, j));
-                setLedViewColor(ledInd, ledDisplay.offColor);
+                setLedViewColor(ledInd, nullColor);
             }
         }
 

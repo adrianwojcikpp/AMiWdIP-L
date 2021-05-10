@@ -1,0 +1,21 @@
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.csprojAssemblyReference.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\App.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LedDisplayExample_MarkupCompile.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LedDisplayExample_MarkupCompile.lref
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.deps.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.runtimeconfig.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.runtimeconfig.dev.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\LedDisplayExample.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LedDisplayExample.g.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.AssemblyInfoInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.AssemblyInfo.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.csproj.CoreCompileInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LedDisplayExample.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LedDisplayExample.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.genruntimeconfig.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\LED Display Control Example\LED Display Control Example 2\obj\Debug\netcoreapp3.1\LED Display Control Example 2.csproj.CopyComplete

@@ -1,10 +1,10 @@
 /**
  ******************************************************************************
- * @file    LED Display Control Example/LedDisplay.java
+ * @file    LED Display Control Example/IoTServer.java
  * @author  Adrian Wojcik
  * @version V1.1
  * @date    04-May-2021
- * @brief   LED display controller: LED display model
+ * @brief   LED display controller: IoT server model
  ******************************************************************************
  */
 
