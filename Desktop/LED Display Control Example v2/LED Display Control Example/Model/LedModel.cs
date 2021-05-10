@@ -12,7 +12,6 @@ namespace LedDisplayExample.Model
 {
     public class LedModel
     {
-        public byte? _r;  //!< Red color component 
         public byte? R; //!< Red color component 
         public byte? G; //!< Green color component 
         public byte? B; //!< Blue color component 
