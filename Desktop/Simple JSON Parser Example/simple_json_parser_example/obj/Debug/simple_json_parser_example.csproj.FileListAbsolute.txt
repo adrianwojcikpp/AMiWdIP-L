@@ -1,0 +1,20 @@
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.exe.config
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.exe
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.pdb
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csprojAssemblyReference.cache
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csproj.CoreCompileInputs.cache
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.exe
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.pdb
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\bin\Debug\Newtonsoft.Json.dll
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\bin\Debug\Newtonsoft.Json.xml
+C:\Users\AW\source\repos\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csproj.CopyComplete
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.exe.config
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.exe
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\bin\Debug\simple_json_parser_example.pdb
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\bin\Debug\Newtonsoft.Json.dll
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\bin\Debug\Newtonsoft.Json.xml
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csprojAssemblyReference.cache
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csproj.CoreCompileInputs.cache
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.csproj.CopyComplete
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.exe
+C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L00 - JSON\simple_json_parser_example\simple_json_parser_example\obj\Debug\simple_json_parser_example.pdb

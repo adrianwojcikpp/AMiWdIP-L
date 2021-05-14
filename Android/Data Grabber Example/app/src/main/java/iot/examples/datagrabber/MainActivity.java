@@ -291,7 +291,9 @@ public class MainActivity extends AppCompatActivity {
                 },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) { errorHandling(Common.ERROR_RESPONSE); }
+                    public void onErrorResponse(VolleyError error) {
+                        errorHandling(Common.ERROR_RESPONSE);
+                    }
                 });
 
         // Add the request to the RequestQueue.

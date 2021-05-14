@@ -1,0 +1,24 @@
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.deps.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.runtimeconfig.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.runtimeconfig.dev.json
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\bin\Debug\netcoreapp3.1\MultiView App.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.csprojAssemblyReference.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\View1.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\View2.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\App.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App_MarkupCompile.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App_MarkupCompile.lref
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\View1.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\View\View2.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.g.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.AssemblyInfoInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.AssemblyInfo.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.csproj.CoreCompileInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\MultiView App\MultiView App\obj\Debug\netcoreapp3.1\MultiView App.genruntimeconfig.cache

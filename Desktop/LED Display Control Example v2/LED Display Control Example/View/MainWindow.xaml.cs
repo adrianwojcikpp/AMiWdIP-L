@@ -52,8 +52,6 @@ namespace LedDisplayExample.View
                         Name = "LED" + i.ToString() + j.ToString(),
                         // Style="{StaticResource LedButtonStyle}"
                         Style = (Style)FindResource("LedIndicatorStyle"),
-                        // Bacground="{StaticResource ... }"
-                        Background = new SolidColorBrush(Color.FromRgb(0xb5, 0xb5, 0xb5)),
                         // BorderThicness="2"
                         BorderThickness = new Thickness(2),
                     };

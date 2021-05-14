@@ -73,7 +73,7 @@ namespace DataGrabberExample.ViewModel
 
         public MainViewModel()
         {
-            DataPlotModel = new PlotModel { Title = "Random data" };
+            DataPlotModel = new PlotModel { Title = "Temperature data" };
 
             DataPlotModel.Axes.Add(new LinearAxis()
             {
@@ -87,14 +87,14 @@ namespace DataGrabberExample.ViewModel
             DataPlotModel.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
-                Minimum = -1,
-                Maximum = 1,
+                Minimum = -30,
+                Maximum = 105,
                 Key = "Vertical",
-                Unit = "-",
-                Title = "Random value"
+                Unit = "*C",
+                Title = "Temperature"
             });
 
-            DataPlotModel.Series.Add(new LineSeries() { Title = "random data series", Color = OxyColor.Parse("#FFFF0000") });
+            DataPlotModel.Series.Add(new LineSeries() { Title = "temperature data series", Color = OxyColor.Parse("#FFFF0000") });
 
             StartButton = new ButtonCommand(StartTimer);
             StopButton = new ButtonCommand(StopTimer);
