@@ -1,1 +1,0 @@
-cd "C:/PP/Dydaktyka/2019_20 (2) sem. let/AiR_sem6_AMiWdIP_L_stat_PL/MATERIALY/L10 - Signal Processing/examples/octave"

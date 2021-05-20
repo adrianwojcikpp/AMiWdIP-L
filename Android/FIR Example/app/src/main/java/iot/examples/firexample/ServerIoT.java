@@ -16,7 +16,7 @@ public class ServerIoT {
 
     private String protocol = "http://";
     private String ip;
-    private String script = "test_signal.php"; // "cgi-bin/test_signal.py" // "test_signal.py"
+    private String script = "server/test_signal.php"; // "cgi-bin/server/test_signal.py"
     private double signalValue = 0.0; //!< response buffer
     private long timeOut = (long) (1000*MyFirData.sampletime);
 

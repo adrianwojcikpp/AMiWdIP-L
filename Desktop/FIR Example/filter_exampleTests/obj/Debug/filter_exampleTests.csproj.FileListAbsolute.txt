@@ -36,22 +36,3 @@ C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_exampleTe
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_exampleTests\obj\Debug\filter_exampleTests.csproj.CopyComplete
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_exampleTests\obj\Debug\filter_exampleTests.dll
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_exampleTests\obj\Debug\filter_exampleTests.pdb
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\filter_exampleTests.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\filter_exampleTests.pdb
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\filter_example.exe
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\OxyPlot.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\filter_example.pdb
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\filter_example.exe.config
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\bin\Debug\OxyPlot.xml
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\obj\Debug\filter_exampleTests.csprojAssemblyReference.cache
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\obj\Debug\filter_exampleTests.csproj.CoreCompileInputs.cache
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\obj\Debug\filter_exampleTests.csproj.CopyComplete
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\obj\Debug\filter_exampleTests.dll
-C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_exampleTests\obj\Debug\filter_exampleTests.pdb
