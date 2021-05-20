@@ -9,7 +9,7 @@ var MyFirUnitTest = {
 	 *		  Error tolerance: 10^(-10).
 	 */
 	ExecuteTest: () => {
-		let maxError = 1e-20;
+		let maxError = 0; //1e-20;
 		let meanError = 0; 
 		let N = MyFirTestData.Input.length;
 		
@@ -21,7 +21,8 @@ var MyFirUnitTest = {
 			meanError += outDelta*outDelta;
 		}
 		meanError = Math.sqrt(meanError/N);
-		
+		meanError += 1;
+    
 		unitjs.number(meanError).isBetween(0, maxError); //!< Unit.js 
 	}
 }

@@ -19,3 +19,24 @@ C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_example\o
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_example\obj\Debug\filter_example.csproj.CopyComplete
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_example\obj\Debug\filter_example.exe
 C:\PP\Dydaktyka\AM_MATERIALY\AM_PRZYKLADY\L10 - DSP\fir_desktop\filter_example\obj\Debug\filter_example.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\filter_example.exe.config
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\filter_example.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\filter_example.pdb
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\OxyPlot.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\OxyPlot.Wpf.dll
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\OxyPlot.xml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\bin\Debug\OxyPlot.Wpf.xml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.csprojAssemblyReference.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\View\MainWindow.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\App.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example_MarkupCompile.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example_MarkupCompile.lref
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\View\MainWindow.baml
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.g.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.Properties.Resources.resources
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.csproj.GenerateResource.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.csproj.CoreCompileInputs.cache
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.csproj.CopyComplete
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.exe
+C:\PP\Dydaktyka\AMiWdIP-L\Desktop\FIR Example\filter_example\obj\Debug\filter_example.pdb

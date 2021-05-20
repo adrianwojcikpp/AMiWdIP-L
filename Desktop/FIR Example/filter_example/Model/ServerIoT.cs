@@ -13,7 +13,7 @@ namespace filter_example.Model
     {
         private string protocol = "http://";
         private string ip;
-        private string script = "testsignal.php"; // cgi-bin/testsignal.py
+        private string script = "server/test_signal.php"; // cgi-bin/server/test_signal.py
         private double signalValue = 0.0;
 
         public ServerIoT(string _ip)
@@ -25,11 +25,15 @@ namespace filter_example.Model
         {
             string response;
             string url = protocol + ip + script + "?k=" + k.ToString();
+            
             using (HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(MyFirData.sampletime) })
             {
                 response = await client.GetStringAsync(url);
             }
-            return Double.Parse(response, NumberStyles.Any, CultureInfo.InvariantCulture);
+
+            Double.TryParse(response, NumberStyles.Any, CultureInfo.InvariantCulture, out signalValue);
+
+            return signalValue;
         }
     }
 }

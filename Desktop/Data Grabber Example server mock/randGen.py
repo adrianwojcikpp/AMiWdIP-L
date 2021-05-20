@@ -25,8 +25,8 @@ seed(2)
 try:
 	while True:
 		# generate random numbers between <min,max>
-		min = -1.0
-		max = 1.0
+		min = 105.0
+		max = -20.0
 		v = min + (random() * (max - min))
 		dp = DataPoint(v)
 		

@@ -32,9 +32,7 @@ $(document).ready(() => {
 	$("#samplefreq").text(1.0/MyFirData.sampletime);
 	samplesMax = time.length;
 	
-  $.ajaxSetup({timeout:1000*MyFirData.sampletime}); // in milliseconds
-  
-	server = new ServerIoT("192.168.0.15");
+	server = new ServerIoT("localhost");
 });
 
 /**

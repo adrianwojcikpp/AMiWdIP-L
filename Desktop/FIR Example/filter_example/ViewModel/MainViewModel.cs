@@ -78,7 +78,7 @@ namespace filter_example.ViewModel
             sampleTime = MyFirData.sampletime;
             samplesMax = chart.Axes[0].Maximum / sampleTime;
 
-            server = new ServerIoT("192.168.0.15");
+            server = new ServerIoT("192.168.56.5");
         }
 
         /**
