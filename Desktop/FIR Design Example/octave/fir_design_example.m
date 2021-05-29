@@ -69,8 +69,10 @@ b = H;        % feedforward filter coefficients
 x_state = zeros(size(H));   % initial state
 xfvec2 = zeros(size(xvec)); % filtration result
 
+myFir = MyFir(b, x_state);
+
 for i = 1 : length(xvec);
-  [xfvec2(i), x_state] = myFIR(xvec(i), x_state, b);
+  [xfvec2(i), myFir] = Execute(myFir, xvec(i));
 endfor
 
 %% Plot results
@@ -106,7 +108,7 @@ subplot(2,2,3)
   xlabel("Time [s]");
   ylabel("Amplitude [-]");
   axis([tminmax Aminmax]);
-  legend('filter function', 'myFIR function');
+  legend('filter function', 'MyFir class');
   title('Filtered test signal time series');
   hold off;
 subplot(2,2,4)

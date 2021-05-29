@@ -3,7 +3,8 @@ import numpy as np
 from scipy.fftpack import fft, fftshift
 from scipy.signal import firwin, lfilter
 import matplotlib.pyplot as plt
-#TODO import MyFir
+
+from MyFir.MyFir import MyFir
 
 # sampling frequency
 ts = 0.1;  # [s]
@@ -68,7 +69,14 @@ Axfvec = abs(fftshift(fft(xfvec)))     # [-]
 Axfvec = [a/len(nvec) for a in Axfvec] # [-]
 
 ## Test signal filtratrion - reference implementation
-# TODO
+b = H.tolist()           # feedforward filter coefficients
+x_state = np.zeros(len(H)).tolist()   # initial state
+xfvec2 = np.zeros(len(xvec)).tolist() # filtration result
+
+myFir = MyFir(b, x_state)
+
+for i in range(len(xvec)):
+  xfvec2[i] = myFir.Execute(xvec[i])
 
 ## Plot results
 plt.rcParams.update({'font.size': 7})
@@ -102,11 +110,12 @@ ax_fr1.set_ylim(AdBminmax)
 ax_fr1.set_ylabel('Amplitude response [dB]')
 
 axs[1,0].set_title('Filtered test signal time series',fontweight='bold')
-axs[1,0].plot([n/fs for n in nvec], xfvec,linewidth=1)
+axs[1,0].plot([n/fs for n in nvec], xfvec, linewidth=1)
+axs[1,0].plot([n/fs for n in nvec], xfvec2, linewidth=1, linestyle='dashed')
 axs[1,0].set_xlim(tminmax)
 axs[1,0].set_ylim(Aminmax)
 axs[1,0].grid(True)
-axs[1,0].legend(['lfilter function'])
+axs[1,0].legend(['lfilter function', 'MyFir class'])
 axs[1,0].set_xlabel('Time [s]')
 axs[1,0].set_ylabel('Amplitude [-]')
 
