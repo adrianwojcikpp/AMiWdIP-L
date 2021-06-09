@@ -21,7 +21,7 @@ var MyFirUnitTest = {
 			meanError += outDelta*outDelta;
 		}
 		meanError = Math.sqrt(meanError/N);
-    
+    meanError = -1.0;
 		unitjs.number(meanError).isBetween(0, maxError); //!< Unit.js 
 	}
 }

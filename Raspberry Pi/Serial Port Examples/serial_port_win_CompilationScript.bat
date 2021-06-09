@@ -1,0 +1,1 @@
+gcc serial_port_demo.c serial_port_lib_win32.c -o demo.exe -std=c99 -Wall

@@ -1,0 +1,2 @@
+cp -r "/home/aw/Desktop/L10" "/media/aw/98083DB4083D926C/PP/Dydaktyka/TC_MATERIALY/TC_PRZYKLADY"
+gcc serial_port_demo.c serial_port_lib_linux.c -o demo -std=c99 -Wall
