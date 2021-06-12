@@ -13,7 +13,7 @@ var chart; ///< Chart.js object
 
 var timer; ///< request timer
 
-const url = 'http://192.168.0.100/sensors_via_deamon.php?id=rpy'
+const url = 'http://192.168.1.106/sensors_via_deamon.php?id=rpy'
 
 /**
 * @brief Generate random value.
