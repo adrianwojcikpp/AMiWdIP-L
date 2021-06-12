@@ -1,0 +1,1 @@
+cp lcdip.service /etc/systemd/system/lcdip.service

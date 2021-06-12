@@ -1,0 +1,28 @@
+#!/bin/bash
+# GPIO output init example 
+# !! run with 'sudo'
+
+# Exports pina to userspace
+echo "4" > /sys/class/gpio/export
+echo "27" > /sys/class/gpio/export
+echo "26" > /sys/class/gpio/export
+echo "6" > /sys/class/gpio/export
+echo "5" > /sys/class/gpio/export
+echo "22" > /sys/class/gpio/export
+
+# Sets pins as an outputa
+echo "out" > /sys/class/gpio/gpio4/direction
+echo "out" > /sys/class/gpio/gpio27/direction
+echo "out" > /sys/class/gpio/gpio26/direction
+echo "out" > /sys/class/gpio/gpio6/direction
+echo "out" > /sys/class/gpio/gpio5/direction
+echo "out" > /sys/class/gpio/gpio22/direction
+
+
+# Sets pins to low
+echo "0" > /sys/class/gpio/gpio4/value
+echo "0" > /sys/class/gpio/gpio27/value
+echo "0" > /sys/class/gpio/gpio26/value
+echo "0" > /sys/class/gpio/gpio6/value
+echo "0" > /sys/class/gpio/gpio5/value
+echo "0" > /sys/class/gpio/gpio22/value

@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo /home/pi/lcd_examples/lcd_example "wlan0 IP:" `bash /home/pi/lcd_examples/print_ip`

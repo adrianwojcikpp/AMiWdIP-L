@@ -1,30 +1,26 @@
-#inlcude "rpi_hal_gpio.h"
-#include <unistd.h>
+#include "lcd.h"
+#include "lcd_config.h"
 
-int main(void)
+int main(int argc, char* argv[])
 {
-  int led = 20;
-  int btn = 16;
-  
-  HAL_GPIO_Export(led);
-  HAL_GPIO_Export(btn);
-  
-  HAL_GPIO_SetDirection(led, GPIO_OUTPUT);
-  HAL_GPIO_SetDirection(btn, GPIO_INPUT);
-  
-  HAL_GPIO_WritePin(led, GPIO_PIN_SET);
-  
-  GPIO_PinState led_state = GPIO_PIN_SET;
-  GPIO_PinState btn_state, btn_state_prev = GPIO_PIN_RESET;
-  
-  while(1)
+  if(argc > 1)
   {
-    btn_state = GPIO_ReadPin(btn);
-    if(btn_state == GPIO_PIN_SET && btn_state_prev == GPIO_PIN_RESET)
-      HAL_GPIO_WritePin(led, led_state ^= 1);
-    btn_state_prev = btn_state;
-    usleep(10000);
+    char str[LCD_LINE_BUF_LEN+1] = { 0 };
+    int len = strlen(argv[1]);
+    len = (len < LCD_LINE_BUF_LEN) ? len : LCD_LINE_BUF_LEN;
+    memcpy(str, argv[1], len);
+    LCD_Init(&hlcd1); 
+    LCD_printStr(&hlcd1, str);
   }
-  
+  if(argc > 2)
+  {
+    char str[LCD_LINE_BUF_LEN+1] = { 0 };
+    int len = strlen(argv[2]);
+    len = (len < LCD_LINE_BUF_LEN) ? len : LCD_LINE_BUF_LEN;
+    memcpy(str, argv[2], len);
+    LCD_SetCursor(&hlcd1, 1, 0);
+    LCD_printStr(&hlcd1, str);
+  }
+
   return 0;
 }

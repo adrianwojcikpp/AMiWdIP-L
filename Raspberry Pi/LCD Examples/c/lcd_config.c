@@ -18,10 +18,12 @@
 /* Define --------------------------------------------------------------------*/
 
 /* Macro ---------------------------------------------------------------------*/
-#define LCD_D4_Pin
-#define LCD_D5_Pin
-#define LCD_D6_Pin
-#define LCD_D7_Pin
+#define LCD_E_Pin  4
+#define LCD_RS_Pin 27
+#define LCD_D4_Pin 26
+#define LCD_D5_Pin 6
+#define LCD_D6_Pin 5
+#define LCD_D7_Pin 22
 
 /* Private variables ---------------------------------------------------------*/
 LCD_PinType  LCD_DATA_Pins[]  = {

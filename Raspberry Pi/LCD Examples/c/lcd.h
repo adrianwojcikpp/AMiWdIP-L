@@ -20,14 +20,15 @@
 #define LCD16xN			// For 16xN LCDs
 
 #ifdef LCD16xN
-#define LCD_LINE_BUF_LEN 17
+#define LCD_LINE_BUF_LEN 16
 #else
-#define LCD_LINE_BUF_LEN 21
+#define LCD_LINE_BUF_LEN 20
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f7xx_hal.h"
+#include "rpi_hal_gpio.h"
 
+#include <stdint.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -87,6 +88,8 @@ typedef struct {
 /* Public variables ----------------------------------------------------------*/
 
 /* Public function prototypes ------------------------------------------------*/
+
+void lcd_gpio_init(LCD_HandleTypeDef* hlcd);
 
 /**
  * @brief LCD initialization procedure.
