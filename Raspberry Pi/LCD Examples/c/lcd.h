@@ -89,8 +89,6 @@ typedef struct {
 
 /* Public function prototypes ------------------------------------------------*/
 
-void lcd_gpio_init(LCD_HandleTypeDef* hlcd);
-
 /**
  * @brief LCD initialization procedure.
  * @note Cursor off, Cursor increment on, No blink @see HD44780 technical note.

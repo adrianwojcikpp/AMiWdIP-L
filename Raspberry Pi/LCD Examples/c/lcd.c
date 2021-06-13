@@ -34,7 +34,7 @@ void lcd_write_command(LCD_HandleTypeDef* hlcd, uint8_t command);
 void lcd_write_data(LCD_HandleTypeDef* hlcd, uint8_t data);
 void lcd_write(LCD_HandleTypeDef* hlcd, uint8_t data, uint8_t len);
 void lcd_delay_us(LCD_HandleTypeDef* hlcd, uint32_t delay_us);
-//void lcd_gpio_init(LCD_HandleTypeDef* hlcd);
+void lcd_gpio_init(LCD_HandleTypeDef* hlcd);
 
 /* Private function ----------------------------------------------------------*/
 /**
