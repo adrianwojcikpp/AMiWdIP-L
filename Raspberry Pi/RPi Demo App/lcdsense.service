@@ -1,0 +1,13 @@
+[Unit]
+Description=lcdsense
+After=network.target
+
+[Service]
+ExecStart=/home/pi/demo_app/app
+WorkingDirectory=/home/pi/demo_app
+StandardOutput=inherit
+StandardError=inherit
+User=root
+
+[Install]
+WantedBy=multi-user.target
