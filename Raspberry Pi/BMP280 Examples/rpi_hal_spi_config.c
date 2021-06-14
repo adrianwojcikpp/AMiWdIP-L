@@ -1,18 +1,17 @@
 /**
   ******************************************************************************
-  * @file    bh1750_config.cpp
-  * @author  AW
-  * @version V2.0
-  * @date    27-Mar-2021
-  * @brief   Digital light sensor BH1750 driver in C++ for Raspberry Pi.
-  *          Configuration source file.
+  * @file    rpi_hal_spi_config.c
+  * @author  AW           Adrian.Wojcik@put.poznan.pl
+  * @version 1.0
+  * @date    13 Jun 2021
+  * @brief   Simple hardware abstraction layer for Raspberry Pi SPI bus
+  *          Configuration file
   *
   ******************************************************************************
   */
   
 /* Includes ------------------------------------------------------------------*/
-#include "bh1750.h"
-#include "bh1750_config.h"
+#include "rpi_hal_spi_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -23,9 +22,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Public variables ----------------------------------------------------------*/
-BH1750_HandleTypeDef light_sensor = {
-  .I2C = nullptr, .Address = BH1750_ADDRESS_L
-};
+SPI_Handle_TypeDef hspi0 = { -1, DEV_SPI0 };
 
 /* Private function prototypes -----------------------------------------------*/
 

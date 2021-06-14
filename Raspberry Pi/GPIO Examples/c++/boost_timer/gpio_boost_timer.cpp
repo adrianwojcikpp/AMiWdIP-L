@@ -3,7 +3,7 @@
 #include <wiringPi.h>
 
 boost::asio::io_service io_service;
-boost::posix_time::milliseconds interval(1000);  // 1 second
+boost::posix_time::milliseconds interval(1);  // 1 millisecond
 boost::asio::deadline_timer timer(io_service, interval);
 
 const int led = 28; //< Red LED: Physical pin 38, BCM GPIO20, and WiringPi pin 28.

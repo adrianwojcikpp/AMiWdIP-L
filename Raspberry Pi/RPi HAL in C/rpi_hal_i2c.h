@@ -15,7 +15,7 @@
 /* Config --------------------------------------------------------------------*/
 
 /* Includes ------------------------------------------------------------------*/
-#include <cstdint>
+#include <stdint.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/i2c-dev.h>
@@ -61,7 +61,7 @@ void I2C_SetSlaveAddress(I2C_Handle_TypeDef* hi2c, int address);
  * @param[in]  tx    Data to transmit
  * @param[in]  len   Data length
  */
-void I2C_Master_Transmit(I2C_Handle_TypeDef* hi2c, uint8_t* tx, uint32_t len);
+void I2C_Master_Transmit(I2C_Handle_TypeDef* hi2c, uint8_t* tx, int len);
 
 /**
  * @brief Adapter /dev/i2c-x master data reception routine 
@@ -69,6 +69,6 @@ void I2C_Master_Transmit(I2C_Handle_TypeDef* hi2c, uint8_t* tx, uint32_t len);
  * @param[out] rx    Receive data buffer
  * @param[in]  len   Data length
  */
-void I2C_Master_Receive(I2C_Handle_TypeDef* hi2c, uint8_t* rx, uint32_t len);
+void I2C_Master_Receive(I2C_Handle_TypeDef* hi2c, uint8_t* rx, int len);
 
 #endif /* RPI_HAL_I2C_H_ */

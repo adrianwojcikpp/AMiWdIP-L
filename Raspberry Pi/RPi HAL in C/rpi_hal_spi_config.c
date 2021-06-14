@@ -1,17 +1,17 @@
 /**
   ******************************************************************************
-  * @file    rpi_hal_i2c_config.cpp
-  * @author  AW
-  * @version V2.0
-  * @date    27-Mar-2021
-  * @brief   Simple hardware abstraction layer for Raspberry Pi I2C bus
+  * @file    rpi_hal_spi_config.c
+  * @author  AW           Adrian.Wojcik@put.poznan.pl
+  * @version 1.0
+  * @date    13 Jun 2021
+  * @brief   Simple hardware abstraction layer for Raspberry Pi SPI bus
   *          Configuration file
   *
   ******************************************************************************
   */
   
 /* Includes ------------------------------------------------------------------*/
-#include "rpi_hal_i2c_config.h"
+#include "rpi_hal_spi_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -22,7 +22,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Public variables ----------------------------------------------------------*/
-I2C_Handle_TypeDef hi2c1 = { .fd = -1, .dev = DEV_I2C1 };
+SPI_Handle_TypeDef hspi0 = { -1, DEV_SPI0 };
 
 /* Private function prototypes -----------------------------------------------*/
 

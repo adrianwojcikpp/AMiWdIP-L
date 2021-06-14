@@ -1,1 +1,0 @@
-gcc main.c lcd.c lcd_config.c rpi_hal_gpio.c -o lcd_example -Wall -std=c11
