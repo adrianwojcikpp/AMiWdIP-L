@@ -1,0 +1,43 @@
+
+.inputborder {
+	height: 40px;
+  width: 200px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.outputborder {
+	height: 160px;
+  width: 200px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	justify-content: start;
+	flex-direction: column;
+}
+
+.menu {
+  width: 200px;
+ 	margin-right: 5px;
+	margin-left: 5px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+button {
+  margin-top: 0x;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 1px;
+}

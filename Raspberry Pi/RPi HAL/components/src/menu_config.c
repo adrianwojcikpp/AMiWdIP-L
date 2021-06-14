@@ -42,7 +42,7 @@ void menu_temp_sensors_fcn(MenuItem_TypeDef* hmenuitem, struct bmp280_dev* hsens
   bmp280_get_uncomp_data(&bmp280_data, hsensor);
   int32_t temp;
   bmp280_get_comp_temp_32bit(&temp, bmp280_data.uncomp_temp, hsensor);
-  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "T: %5d.%02d %cC", temp/100, temp%100, LCD_DEGREE_SIGN);
+  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "T: %5d.%02d %cC  ", temp/100, temp%100, LCD_DEGREE_SIGN);
 }
 
 /* Digital temperature sensor #1: BMP280 */
@@ -58,7 +58,7 @@ void menu_pres_sensors_fcn(MenuItem_TypeDef* hmenuitem, struct bmp280_dev* hsens
   bmp280_get_uncomp_data(&bmp280_data, hsensor);
   uint32_t pres;
   bmp280_get_comp_pres_32bit(&pres, bmp280_data.uncomp_press, hsensor);
-  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "P: %5d.%02d hPa", pres/100, pres%100);
+  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "P: %5d.%02d hPa ", pres/100, pres%100);
 }
 
 /* Digital pressure sensor #1: BMP280 */

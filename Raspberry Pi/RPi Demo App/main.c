@@ -60,12 +60,15 @@ int main(void)
 
   /** LCD *******************************************************************/
   LCD_Init(&hlcd1); 
-  menu_item = &menu_light1; //< start from light sensor
+  menu_item = &menu_pres1; //< start from light sensor
   
-  /** Push-button: TODO - component ****************************************/
+  /** Push-button ***********************************************************/
   _Bool update_flag = 0;
   HAL_GPIO_ExportPin(hbtn.Pin);
   HAL_GPIO_SetPinDirection(hbtn.Pin, GPIO_INPUT);
+  
+  /** Output file ***********************************************************/
+ 
 
   while (1)
   {
@@ -85,6 +88,10 @@ int main(void)
       MENU_ClearDisplayBuffer(menu_item->next);
       MENU_CallFunction(menu_item->next);
       LCD_printStr(&hlcd1, menu_item->next->display_str);
+      
+      FILE* output_file = fopen("/home/pi/server/lcd.dat", "w");
+      fprintf(output_file, "%s\n%s", menu_item->display_str, menu_item->next->display_str);
+      fclose(output_file);
     }
     
     /** Push-button *********************************************************/
@@ -99,5 +106,6 @@ int main(void)
     HAL_Delay(10);
   }
 
+  
   return 0;
 }
