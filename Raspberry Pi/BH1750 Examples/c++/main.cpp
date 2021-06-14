@@ -30,11 +30,9 @@ inline int wait_for_char(int timeout)
 int main (void) 
 {
   // Initialize I2C bus
-  I2C_Init(&hi2c1);
-  // Set I2C handler bus
-  light_sensor.I2C = &hi2c1;
+  HAL_I2C_Init(&hi2c1);
   // Set slave device address
-  I2C_SetSlaveAddress(&hi2c1, light_sensor.Address);
+  HAL_I2C_SetSlaveAddress(&hi2c1, light_sensor.Address);
   // Initialize digital light sensor
   BH1750_Init(&light_sensor);
   // Light intensity measurement result
@@ -61,7 +59,7 @@ int main (void)
   // Close result file
   std::fclose(light_file);
   // Deinitilize I2C bus
-  I2C_Deinit(&hi2c1);
+  HAL_I2C_Deinit(&hi2c1);
   
   return 0;
 }

@@ -1,0 +1,13 @@
+[Unit]
+Description=lcdip
+After=network.target
+
+[Service]
+ExecStart=/home/pi/lcd_examples/service/lcd_print_ip
+WorkingDirectory=/home/pi/lcd_examples/service
+StandardOutput=inherit
+StandardError=inherit
+User=root
+
+[Install]
+WantedBy=multi-user.target
