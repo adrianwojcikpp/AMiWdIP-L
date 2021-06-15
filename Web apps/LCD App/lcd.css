@@ -1,7 +1,7 @@
 
 .inputborder {
 	height: 40px;
-  width: 200px;
+  width: 240px;
 	margin-right: 5px;
 	margin-left: 5px;
 	margin-top: 5px;
@@ -15,7 +15,7 @@
 
 .outputborder {
 	height: 160px;
-  width: 200px;
+  width: 240px;
 	margin-right: 5px;
 	margin-left: 5px;
 	margin-top: 5px;
@@ -28,16 +28,16 @@
 }
 
 .menu {
-  width: 200px;
+  width: 240px;
  	margin-right: 5px;
 	margin-left: 5px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 }
 
 button {
   margin-top: 0x;
   margin-bottom: 0px;
-  margin-right: 0px;
-  margin-left: 1px;
+  margin-right: 3px;
+  margin-left: 3px;
 }

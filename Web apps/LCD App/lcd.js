@@ -5,6 +5,7 @@
 $(document).ready(()=>{
   $("#btn").click(send_user_text);
   $("#ss").click(enable_service);
+  $("#next").click(nextItem);
 });
 
 function send_user_text() {
@@ -55,6 +56,16 @@ function updateDisplay() {
       $("#line1").val(lines[0].replace(/[^\x00-\x7F]/g, "?"));
       $("#line2").val(lines[1].replace(/[^\x00-\x7F]/g, "?"));
 		}
+	});
+}
+
+function nextItem() {
+	const url = 'http://' + window.location.hostname + '/pushbtn.php'
+	$.ajax(url, 
+	{
+		type: 'GET',
+		dataType: 'text',
+    error: requestError
 	});
 }
 
