@@ -56,7 +56,9 @@ void menu_pres_sensors_fcn(MenuItem_TypeDef* hmenuitem, struct bmp280_dev* hsens
 {
   struct bmp280_uncomp_data bmp280_data;
   bmp280_get_uncomp_data(&bmp280_data, hsensor);
-  uint32_t pres;
+  int32_t temp;
+  bmp280_get_comp_temp_32bit(&temp, bmp280_data.uncomp_temp, hsensor); // 't_fine' coefficient used in 'bmp280_get_comp_pres_32bit'
+  uint32_t pres;                                                       // is set up in 'bmp280_get_comp_temp_32bit'
   bmp280_get_comp_pres_32bit(&pres, bmp280_data.uncomp_press, hsensor);
   hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "P: %5d.%02d hPa ", pres/100, pres%100);
 }
