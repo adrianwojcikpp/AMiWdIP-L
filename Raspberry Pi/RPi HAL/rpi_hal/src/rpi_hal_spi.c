@@ -34,12 +34,12 @@
  */
 int HAL_SPI_Init(SPI_Handle_TypeDef* hspi)
 {
-  uint8_t mode = SPI_MODE_0;
-  uint8_t bits = 8;           /* SPI0 bits per word  */
-  uint32_t speed = 500000;    /* SPI0 max speed [Hz] */
-  uint16_t delay = 0;         /* SPI0 delay [us]     */
+  //uint8_t mode = SPI_MODE_0;
+  //uint8_t bits = 8;           /* SPI0 bits per word  */
+  //uint32_t speed = 500000;    /* SPI0 max speed [Hz] */
+  //uint16_t delay = 0;         /* SPI0 delay [us]     */
   
-  hspi->tr.delay_usecs = delay;
+  hspi->tr.delay_usecs = (hspi->Init.delay);
 	hspi->fd = open(DEV_SPI0, O_RDWR);
 	if (hspi->fd < 0)
   {
@@ -50,14 +50,14 @@ int HAL_SPI_Init(SPI_Handle_TypeDef* hspi)
   }
 
 	/* SPI0 mode */
-	if (ioctl(hspi->fd, SPI_IOC_WR_MODE, &mode) < 0)
+	if (ioctl(hspi->fd, SPI_IOC_WR_MODE, &(hspi->Init.mode)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
      */
     return -2;
   }
-  if (ioctl(hspi->fd, SPI_IOC_RD_MODE, &mode) < 0)
+  if (ioctl(hspi->fd, SPI_IOC_RD_MODE, &(hspi->Init.mode)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
@@ -66,23 +66,23 @@ int HAL_SPI_Init(SPI_Handle_TypeDef* hspi)
   }
 
   /* SPI0 bits per word */
-  if (ioctl(hspi->fd, SPI_IOC_WR_BITS_PER_WORD, &bits) < 0)
+  if (ioctl(hspi->fd, SPI_IOC_WR_BITS_PER_WORD, &(hspi->Init.bits)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
      */
     return -4;
   }
-  if (ioctl(hspi->fd, SPI_IOC_RD_BITS_PER_WORD, &bits) < 0)
+  if (ioctl(hspi->fd, SPI_IOC_RD_BITS_PER_WORD, &(hspi->Init.bits)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
      */
   }
-  hspi->tr.bits_per_word = bits;
+  hspi->tr.bits_per_word = (hspi->Init.bits);
 
 	/* SPI0 max speed [Hz] */ 
-  if (ioctl(hspi->fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed) < 0)
+  if (ioctl(hspi->fd, SPI_IOC_WR_MAX_SPEED_HZ, &(hspi->Init.speed)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
@@ -90,14 +90,14 @@ int HAL_SPI_Init(SPI_Handle_TypeDef* hspi)
     return -5;
   }
   
-  if (ioctl(hspi->fd, SPI_IOC_RD_MAX_SPEED_HZ, &speed) < 0)
+  if (ioctl(hspi->fd, SPI_IOC_RD_MAX_SPEED_HZ, &(hspi->Init.speed)) < 0)
   {
     /* ERROR HANDLING; 
        you can check errno to see what went wrong 
      */
     return -6;
   }
-  hspi->tr.speed_hz = speed;
+  hspi->tr.speed_hz = (hspi->Init.speed);
   return 0; 
 }
 

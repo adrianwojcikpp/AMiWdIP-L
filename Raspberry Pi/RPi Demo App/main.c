@@ -72,18 +72,23 @@ int main(void)
     /** LCD menu ************************************************************/
     if(loop_counter%100 == 0 || next_item_flag) // update LCD every hundredth loop (1 sec)
     {
-      // Input file 
-      FILE* input_file = fopen("/home/pi/server/btn.dat", "r"); // Read ["0"/"1"]
-      fscanf(input_file, "%d", &next_item_flag);
-      fclose(input_file);
-      input_file = fopen("/home/pi/server/btn.dat", "w");       // Write "0"
-      fprintf(input_file, "0");
-      fclose(input_file);
-      
       // Change menu item to the next one
       if(next_item_flag)
         menu_item = menu_item->next;
-      
+      else
+      {
+        // Input file 
+        FILE* input_file = fopen("/home/pi/server/btn.dat", "r"); // Read ["0"/"1"]
+        fscanf(input_file, "%d", &next_item_flag);
+        fclose(input_file);
+        input_file = fopen("/home/pi/server/btn.dat", "w");       // Write "0"
+        fprintf(input_file, "0");
+        fclose(input_file);
+        
+        if(next_item_flag)
+          menu_item = menu_item->next;
+      }
+       
       next_item_flag = 0;  
       loop_counter = 0; 
       

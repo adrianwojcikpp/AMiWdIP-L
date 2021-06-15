@@ -23,10 +23,24 @@
 #include <linux/spi/spidev.h>
 
 /* Typedef -------------------------------------------------------------------*/
+
+/**
+ * @brief Initialization structure 
+ * @see https://docs.huihoo.com/doxygen/linux/kernel/3.7/include_2linux_2spi_2spi_8h.html 
+ */
+typedef struct
+{
+  uint8_t mode;
+  uint8_t bits;
+  uint32_t speed;
+  uint16_t delay;
+} SPI_Init_TypeDef;
+
 typedef struct
 {
   int fd;
   const char* dev;
+  SPI_Init_TypeDef Init;
   struct spi_ioc_transfer tr;
 } SPI_Handle_TypeDef;
 

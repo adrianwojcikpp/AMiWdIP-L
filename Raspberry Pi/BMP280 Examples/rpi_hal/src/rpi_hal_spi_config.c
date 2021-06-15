@@ -22,7 +22,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Public variables ----------------------------------------------------------*/
-SPI_Handle_TypeDef hspi0 = { -1, DEV_SPI0 };
+SPI_Handle_TypeDef hspi0 = { -1, DEV_SPI0, { SPI_MODE_0, 8, 500000 /*Hz*/, 0 } };
 
 /* Private function prototypes -----------------------------------------------*/
 
