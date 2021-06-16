@@ -1,98 +1,89 @@
-
 /**
 * @brief document onReady event handling
 */
 $(document).ready(()=>{
-  $("#btn").click(send_user_text);
-  $("#ss").click(enable_service);
+  $("#send").click(writeLines);
+  $("#app").click(startApp);
   $("#next").click(nextItem);
 });
 
-function send_user_text() {
-  lcd_write($("#line1").val(), $("#line2").val());
-}
-
-function enable_service() {
-  $("#ss").unbind();
-  $("#ss").click(disable_service);
-  $("#ss").html('Stop App');
-  lcd_service(1);
-  startTimer();
-}
-
-function disable_service() {
-  $("#ss").unbind();
-  $("#ss").click(enable_service);
-  $("#ss").html('Start App');
-  lcd_service(0);
-  stopTimer();
-}
-
-var timer;
-
 /**
-* @brief Start request timer
+* @brief On click event handler for 'app' button
+*        Starting LCD embedded application
 */
-function startTimer(){
-  timer = setInterval(updateDisplay, 1000);
+function startApp() {
+  $("#app").unbind();
+  $("#app").click(stopApp);
+  $("#app").html('Stop App');
+  serviceControl(1);
+  startDisplayTimer();
 }
 
 /**
-* @brief Stop request timer
+* @brief On click event handler for 'app' button
+*        Stopping LCD embedded application
 */
-function stopTimer(){
-  clearInterval(timer);
+function stopApp() {
+  $("#app").unbind();
+  $("#app").click(startApp);
+  $("#app").html('Start App');
+  serviceControl(0);
+  stopDisplayTimer();
 }
 
-function updateDisplay() {
-	const url = 'http://' + window.location.hostname + '/lcd_read.php'
-	$.ajax(url, 
-	{
-		type: 'GET',
-		dataType: 'text',
-    error: requestError,
-		success: (response, status, xhr) => {	
-      var lines = response.split("\n");
-      $("#line1").val(lines[0].replace(/[^\x00-\x7F]/g, "?"));
-      $("#line2").val(lines[1].replace(/[^\x00-\x7F]/g, "?"));
-		}
-	});
+var displayTimer //< Display update timer 
+const displayTimerPeriod = 1000;   //< ms 
+
+/**
+* @brief Start display update timer
+*/
+function startDisplayTimer(){
+  displayTimer = setInterval(readLines, displayTimerPeriod);
 }
 
+/**
+* @brief Stop display update timer
+*/
+function stopDisplayTimer(){
+  clearInterval(displayTimer);
+}
+
+/**
+* @brief Reading display lines form web server
+*/
+function readLines() {
+  WebServerRequest(WebServerAPI.LcdRead, [], (response) => {	
+    var lines = response.split("\n");
+    $("#line1").val(lines[0].replace(/[^\x00-\x7F]/g, "?"));
+    $("#line2").val(lines[1].replace(/[^\x00-\x7F]/g, "?"));
+  });
+}
+
+/**
+* @brief Selecting next item on menu list via web server
+*/
 function nextItem() {
-	const url = 'http://' + window.location.hostname + '/pushbtn.php'
-	$.ajax(url, 
-	{
-		type: 'GET',
-		dataType: 'text',
-    error: requestError
-	});
+  WebServerRequest(WebServerAPI.LcdNext, [], () => {});
 }
 
-function lcd_write(l1, l2) {
-	const url = 'http://' + window.location.hostname + '/lcd_write.php'
-	$.ajax(url + "?line1=" + l1 + "&line2=" + l2, 
-	{
-		type: 'GET',
-		dataType: 'text',
-    error: requestError,
-		success: (response, status, xhr) => {	
-			$("#response").html(response);
-		}
-	});
+/**
+* @brief Writing display lines via web server
+*/
+function writeLines() {
+  WebServerRequest(WebServerAPI.LcdWrite, [
+    $("#line1").val(), $("#line2").val()
+  ],(response) => { 
+    $("#response").html(response); 
+  });
 }
 
-function lcd_service(en) {
-	const url = 'http://' + window.location.hostname + '/lcd_service.php'
-	$.ajax(url + "?enable=" + en, 
-	{
-		type: 'GET',
-		dataType: 'text',
-    error: requestError,
-		success: (response, status, xhr) => {	
-			$("#response").html(response);
-		}
-	});
+/**
+* @brief LCD embedded application control
+*/
+function serviceControl(en) {
+  WebServerRequest(WebServerAPI.LcdService, [en],(response) => { 
+    $("#response").html(response); 
+  });
 }
 
 /**
