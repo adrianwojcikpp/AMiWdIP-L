@@ -104,7 +104,7 @@ namespace DataGrabberExample.ViewModel
             ipAddress = config.IpAddress;
             sampleTime = config.SampleTime;
 
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer("HTTPS", IpAddress);
         }
 
         /**
@@ -220,7 +220,7 @@ namespace DataGrabberExample.ViewModel
                 StopTimer();
 
             config = new ConfigParams(ipAddress, sampleTime);
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer("HTTPS", IpAddress);
 
             if (restartTimer)
                 StartTimer();
@@ -239,7 +239,7 @@ namespace DataGrabberExample.ViewModel
             config = new ConfigParams();
             IpAddress = config.IpAddress;
             SampleTime = config.SampleTime.ToString();
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer("HTTPS", IpAddress);
 
             if (restartTimer)
                 StartTimer();

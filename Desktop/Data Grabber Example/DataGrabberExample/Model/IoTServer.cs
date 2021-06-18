@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,19 +14,65 @@ namespace DataGrabberExample.Model
 {
     public class IoTServer
     {
-        private string ip;
+        private readonly string protocol;
+        private readonly string ip;
 
-        public IoTServer(string _ip)
+        // SHA-1 
+        private static readonly byte[] validHashBytes 
+            = HashStringToByteArray("A8:81:16:55:6D:3B:54:CE:11:7B:62:83:AE:52:15:20:95:71:43:4E");
+
+        public IoTServer(string _protocol, string _ip)
         {
             ip = _ip;
+            if(_protocol.ToLower() == "https")
+            {
+                protocol = "https://";
+                ServicePointManager.ServerCertificateValidationCallback += ValidateServerCertficate;
+            }
+            else
+            {
+                protocol = "http://";
+            }
+        }
+
+        private static byte[] HashStringToByteArray(string hash)
+        {
+            var hex = hash.Replace(":", "");
+            return Enumerable.Range(0, hex.Length)
+                     .Where(x => x % 2 == 0)
+                     .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                     .ToArray();
         }
 
         /**
-         * @brief obtaining the address of the data file from IoT server IP.
-         */
+          * @brief Validates the SSL server certificate.
+          * @param[in] sender : An object that contains state information for this validation
+          * @param[in] cert : The certificate used to authenticate the remote party.
+          * @param[in] chain : The chain of certificate authorities associated with the remote certificate
+          * @param[in] sslPolicyErrors : One or more errors associated with the remote certificate
+          * @return Returns a boolean value that determines whether the specified
+          *         certificate is accepted for authentication; true to accept or false to
+          *          reject.
+          *          
+          */
+        private static bool ValidateServerCertficate(object sender, 
+            X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // WARNING! : ALL CERTICATES WILL BE VALID! SECURITY RISK! 
+            //bool isValid = true;
+
+            // Compare SHA-1
+            bool isValid = validHashBytes.SequenceEqual(cert.GetCertHash());
+
+            return isValid;
+        }
+
+        /**
+          * @brief obtaining the address of the data file from IoT server IP.
+          */
         private string GetFileUrl()
         {
-            return "http://" + ip + "/server/chartdata.json";
+            return protocol + ip + "/file.json";
         }
 
         /**
@@ -32,7 +80,7 @@ namespace DataGrabberExample.Model
          */
         private string GetScriptUrl()
         {
-            return "http://" + ip + "/server/resource.php";
+            return protocol + ip + "/server/resource.php";
         }
 
         /**
@@ -41,7 +89,8 @@ namespace DataGrabberExample.Model
         public async Task<string> GETwithClient()
         {
             string responseText = null;
-
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             try
             {
                 using (HttpClient client = new HttpClient())
