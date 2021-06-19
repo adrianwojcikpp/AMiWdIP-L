@@ -1,17 +1,17 @@
 /**
   ******************************************************************************
-  * @file    bh1750_config.cpp
-  * @author  AW
-  * @version V2.0
-  * @date    27-Mar-2021
-  * @brief   Digital light sensor BH1750 driver in C++ for Raspberry Pi.
-  *          Configuration source file.
+  * @file    rpi_hal_gpio_config.c
+  * @author  AW           Adrian.Wojcik@put.poznan.pl
+  * @version 1.0
+  * @date    Sat 19 Jun 23:37:07 CEST 2021
+  * @brief
+  *          Source file.
   *
   ******************************************************************************
   */
   
 /* Includes ------------------------------------------------------------------*/
-#include "bh1750_config.h"
+#include "rpi_hal_gpio_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -22,9 +22,20 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* Public variables ----------------------------------------------------------*/
-BH1750_HandleTypeDef light_sensor = {
-  BH1750_I2C, BH1750_ADDRESS_L, 0xffff
+GPIO_Init_TypeDef hgpio[] = {
+  /* LCD Pins */
+  { LCD_E_Pin,  GPIO_OUTPUT, GPIO_PIN_RESET },
+  { LCD_RS_Pin, GPIO_OUTPUT, GPIO_PIN_RESET },
+  { LCD_D4_Pin, GPIO_OUTPUT, GPIO_PIN_RESET },
+  { LCD_D4_Pin, GPIO_OUTPUT, GPIO_PIN_RESET },
+  { LCD_D4_Pin, GPIO_OUTPUT, GPIO_PIN_RESET },
+  { LCD_D4_Pin, GPIO_OUTPUT, GPIO_PIN_RESET },
+  /* Push-button Pin */
+  {BTN_Pin,     GPIO_INPUT,  GPIO_PIN_RESET },
+  
 };
+ 
+int hgpio_size = PIN_ARRAY_LEN(hgpio);
 
 /* Private function prototypes -----------------------------------------------*/
 

@@ -37,6 +37,25 @@
 
 /* Public function -----------------------------------------------------------*/
 
+int HAL_GPIO_Init(GPIO_Init_TypeDef* hgpio, int n)
+{
+  for(int i = 0; i < n; i++)
+  {
+    if(HAL_GPIO_ExportPin(hgpio[i].pin) < 0)
+      return -100-i;
+    
+    if(HAL_GPIO_SetPinDirection(hgpio[i].pin, hgpio[i].dir) < 0)
+      return -200-i;
+    
+    if(hgpio[i].pin == GPIO_OUTPUT)
+    {
+      if(HAL_GPIO_WritePin(hgpio[i].pin, hgpio[i].value) < 0)
+        return -300-i;
+    }
+  }
+  return 0;
+}
+
 int HAL_GPIO_ExportPin(int pin)
 {
   int fd = open("/sys/class/gpio/export", O_WRONLY);

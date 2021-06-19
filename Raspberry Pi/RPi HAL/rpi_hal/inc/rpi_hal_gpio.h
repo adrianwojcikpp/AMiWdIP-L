@@ -20,6 +20,12 @@
 typedef enum { GPIO_PIN_RESET = 0, GPIO_PIN_SET } GPIO_PinState;
 typedef enum { GPIO_INPUT = 0, GPIO_OUTPUT } GPIO_Direction;
 
+typedef struct {
+  int pin;
+  GPIO_Direction dir;
+  GPIO_PinState value;
+} GPIO_Init_TypeDef;
+
 /* Define --------------------------------------------------------------------*/
 
 /* Macro ---------------------------------------------------------------------*/
@@ -27,6 +33,14 @@ typedef enum { GPIO_INPUT = 0, GPIO_OUTPUT } GPIO_Direction;
 /* Public variables ----------------------------------------------------------*/
 
 /* Public function prototypes ------------------------------------------------*/
+
+/**
+ * @brief
+ * @param[in] hgpio
+ * @param[in] n
+ * @return 
+ */
+int HAL_GPIO_Init(GPIO_Init_TypeDef* hgpio, int n);
 
 /**
  * @brief

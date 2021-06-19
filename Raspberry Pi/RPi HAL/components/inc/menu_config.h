@@ -19,6 +19,11 @@
 #include "bmp280_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
+typedef struct {
+  float temp;
+  float pres;
+  float light;
+} Measurements_TypeDef;
 
 /* Define --------------------------------------------------------------------*/
 
@@ -32,6 +37,8 @@ extern MenuItem_TypeDef menu_light1;
 extern MenuItem_TypeDef menu_temp1;
 
 extern MenuItem_TypeDef menu_pres1;
+
+extern Measurements_TypeDef measurements;
 
 /* Public function prototypes ------------------------------------------------*/
 

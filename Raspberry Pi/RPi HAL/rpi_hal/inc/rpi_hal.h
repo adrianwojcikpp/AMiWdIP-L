@@ -1,17 +1,29 @@
 /**
   ******************************************************************************
-  * @file    pushbtn_config.c
+  * @file    rpi_hal.h
   * @author  AW           Adrian.Wojcik@put.poznan.pl
   * @version 1.0
-  * @date    13 Jun 2021
-  * @brief   Simple push button driver library configuration file.
+  * @date    Sun 20 Jun 00:13:01 CEST 2021
+  * @brief   Raspberry Pi hardware abstraction layer
+  *          Header file.
   *
   ******************************************************************************
   */
-  
+#ifndef RPI_HAL_H_
+#define RPI_HAL_H_
+
+/* Config --------------------------------------------------------------------*/
+
 /* Includes ------------------------------------------------------------------*/
-#include "pushbtn_config.h"
+#include "rpi_hal_gpio.h"
 #include "rpi_hal_gpio_config.h"
+#include "rpi_hal_delay.h"
+#include "rpi_hal_uart.h"
+#include "rpi_hal_uart_config.h"
+#include "rpi_hal_spi.h"
+#include "rpi_hal_spi_config.h"
+#include "rpi_hal_i2c.h"
+#include "rpi_hal_i2c_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -19,15 +31,8 @@
 
 /* Macro ---------------------------------------------------------------------*/
 
-/* Private variables ---------------------------------------------------------*/
-
 /* Public variables ----------------------------------------------------------*/
-BTN_HandleTypeDef hbtn = {
-  .Pin = BTN_Pin, .Edge = FALLING_EDGE, .State = GPIO_PIN_SET
-};
 
-/* Private function prototypes -----------------------------------------------*/
+/* Public function prototypes ------------------------------------------------*/
 
-/* Private function ----------------------------------------------------------*/
-
-/* Public function -----------------------------------------------------------*/
+#endif /* RPI_HAL_H_ */

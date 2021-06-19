@@ -13,6 +13,7 @@
   
 /* Includes ------------------------------------------------------------------*/
 #include "lcd.h"
+#include "rpi_hal_gpio.h"
 #include "rpi_hal_delay.h"
 
 /* Typedef -------------------------------------------------------------------*/
@@ -35,38 +36,8 @@ void lcd_write_command(LCD_HandleTypeDef* hlcd, uint8_t command);
 void lcd_write_data(LCD_HandleTypeDef* hlcd, uint8_t data);
 void lcd_write(LCD_HandleTypeDef* hlcd, uint8_t data, uint8_t len);
 void lcd_delay_us(LCD_HandleTypeDef* hlcd, uint32_t delay_us);
-void lcd_gpio_init(LCD_HandleTypeDef* hlcd);
 
 /* Private function ----------------------------------------------------------*/
-/**
- * @brief Initialize LCD GPIO pins
- * @param[in] hlcd    LCD handler
- * @return None
- */
-void lcd_gpio_init(LCD_HandleTypeDef* hlcd)
-{
-  /* Enable Pin: output */
-  HAL_GPIO_ExportPin(hlcd->E_Pin);
-  HAL_GPIO_SetPinDirection(hlcd->E_Pin, GPIO_OUTPUT);
-  HAL_GPIO_WritePin(hlcd->E_Pin, GPIO_PIN_RESET);
-  
-  /* Register select Pin: output */
-  HAL_GPIO_ExportPin(hlcd->RS_Pin);
-  HAL_GPIO_SetPinDirection(hlcd->RS_Pin, GPIO_OUTPUT);
-  HAL_GPIO_WritePin(hlcd->RS_Pin, GPIO_PIN_RESET);
-  
-  uint8_t len = (hlcd->Mode == LCD_4_BIT_MODE) ? 4 : 8; 
-  
-  for(uint8_t i = 0; i < len; i++)
-  {
-    /* Data register Pins: outputs */
-    HAL_GPIO_ExportPin(hlcd->DATA_Pins[i]);
-    HAL_GPIO_SetPinDirection(hlcd->DATA_Pins[i], GPIO_OUTPUT);
-    HAL_GPIO_WritePin(hlcd->DATA_Pins[i], GPIO_PIN_RESET);
-  }
-
-}
-
 /**
  * @brief Write a byte to the command register
  * @param[in] hlcd    LCD handler
@@ -141,8 +112,6 @@ void lcd_write(LCD_HandleTypeDef* hlcd, uint8_t data, uint8_t len)
 void LCD_Init(LCD_HandleTypeDef* hlcd)
 {
   hlcd->IsInitialized = 0;
-  lcd_gpio_init(hlcd);             // GPIO initialization
-  
   __LCD_Delay(hlcd, 15.2);         // >15 ms
 
   if(hlcd->Mode == LCD_4_BIT_MODE)

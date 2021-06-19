@@ -11,41 +11,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "pushbtn.h"
-#include "pushbtn_config.h"
-
-#include "bmp280.h"
-#include "bmp280_config.h"
-
-#include "bh1750.h"
-#include "bh1750_config.h"
-
-#include "lcd.h"
-#include "lcd_config.h"
-
-#include "menu.h"
-#include "menu_config.h"
+#include "rpi_hal.h"
+#include "components.h"
 
 int main(void)
 {  
-  int loop_counter = 0; // main loop counter
-
-  /** LIGHT SENSOR **********************************************************/
+  /** RASPSPERRY PI GPIO PINS INITIALIZATION Begin ****************************/
+  // Initialize digital I/Os
+  int gpio_status = HAL_GPIO_Init(hgpio, hgpio_size);
+  
+  if(gpio_status < 0)
+  {
+    printf("GPIO initialization error\n");
+    return -1; 
+  }
+  
   // Initialize I2C bus
   int i2c_status = HAL_I2C_Init(&hi2c1);
   // Set slave device address
   i2c_status = HAL_I2C_SetSlaveAddress(&hi2c1, light_sensor.Address);
-
+  
   if(i2c_status < 0)
   {
     printf("I2C initialization error\n");
     return -1; 
   }
   
-    // Initialize digital light sensor
-  BH1750_Init(&light_sensor);
-  
-  /** TEMP / PRESSURE SENSOR ************************************************/
   // Initialize SPI bus
   int spi_status = HAL_SPI_Init(&hspi0);
 
@@ -55,18 +46,32 @@ int main(void)
     return -1; 
   }
 
+  // Initialize serial port (UART)
+  char uart_rx_buf[256]={ 0, };
+  int uart_status = HAL_UART_Init(&huart0);
+
+  if(uart_status < 0)
+  {
+    printf("UART initialization error\n");
+    return -1; 
+  }
+  /** RASPSPERRY PI GPIO PINS INITIALIZATION End ******************************/
+  
+  /** EXTERNAL COMPONENTS INITIALIZATION Begin ********************************/
+  // Initialize digital light sensor
+  BH1750_Init(&light_sensor);
+
   // Initialize digital temp/pressure sensor
   BMP280_Init(&temp_press_sensor);
 
-  /** LCD *******************************************************************/
+  // Initialize alphanumeric display
   LCD_Init(&hlcd1); 
-  menu_item = &menu_pres1; //< start from pressure sensor
+  /** EXTERNAL COMPONENTS INITIALIZATION End *********************************/
   
-  /** Push-button ***********************************************************/
+  menu_item = &menu_pres1; //< start menu list from pressure sensor
+  int loop_counter = 0;    // main loop counter
   int next_item_flag = 0;
-  HAL_GPIO_ExportPin(hbtn.Pin);
-  HAL_GPIO_SetPinDirection(hbtn.Pin, GPIO_INPUT);
-  
+
   while (1)
   {
     /** LCD menu ************************************************************/
@@ -107,6 +112,12 @@ int main(void)
       FILE* output_file = fopen("/home/pi/server/lcd.dat", "w");
       fprintf(output_file, "%s\n%s", menu_item->display_str, menu_item->next->display_str);
       fclose(output_file);
+      
+      // Serial port data logging
+      int uart_rx_len = sprintf(uart_rx_buf, 
+        "{\"temperature\":\"%5.2f\", \"pressure\":\"%7.2f\", \"light\":\"%5.2f\"}\n", 
+        measurements.temp, measurements.pres, measurements.light);
+      HAL_UART_Transmit(&huart0, (uint8_t*)uart_rx_buf, uart_rx_len);
     }
     
     /** Push-button *********************************************************/

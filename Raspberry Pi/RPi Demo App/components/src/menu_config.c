@@ -22,11 +22,13 @@
 
 /* Public variables ----------------------------------------------------------*/
 MenuItem_TypeDef* menu_item;
+Measurements_TypeDef measurements; 
 
 /** MENU LIGHT SENSORS CODE BEGIN *******************************************************************************************/
 void menu_light_sensors_fcn(MenuItem_TypeDef* hmenuitem, BH1750_HandleTypeDef* hsensor)
 {
-  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "L: %8.2f lx  ", BH1750_ReadLux(hsensor));
+  measurements.light = BH1750_ReadLux(hsensor);
+  hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "L: %8.2f lx  ", measurements.light);
 }
 
 /* Digital light sensor #1: BH1750 (ADDR = 'L') */
@@ -42,6 +44,7 @@ void menu_temp_sensors_fcn(MenuItem_TypeDef* hmenuitem, struct bmp280_dev* hsens
   bmp280_get_uncomp_data(&bmp280_data, hsensor);
   int32_t temp;
   bmp280_get_comp_temp_32bit(&temp, bmp280_data.uncomp_temp, hsensor);
+  measurements.temp = (float)temp / 100.0;
   hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "T: %5d.%02d %cC  ", temp/100, temp%100, LCD_DEGREE_SIGN);
 }
 
@@ -58,8 +61,10 @@ void menu_pres_sensors_fcn(MenuItem_TypeDef* hmenuitem, struct bmp280_dev* hsens
   bmp280_get_uncomp_data(&bmp280_data, hsensor);
   int32_t temp;
   bmp280_get_comp_temp_32bit(&temp, bmp280_data.uncomp_temp, hsensor); // 't_fine' coefficient used in 'bmp280_get_comp_pres_32bit'
+  measurements.temp = (float)temp / 100.0;
   uint32_t pres;                                                       // is set up in 'bmp280_get_comp_temp_32bit'
   bmp280_get_comp_pres_32bit(&pres, bmp280_data.uncomp_press, hsensor);
+  measurements.pres = (float)pres / 100.0;
   hmenuitem->display_strlen = sprintf(hmenuitem->display_str, "P: %5d.%02d hPa ", pres/100, pres%100);
 }
 

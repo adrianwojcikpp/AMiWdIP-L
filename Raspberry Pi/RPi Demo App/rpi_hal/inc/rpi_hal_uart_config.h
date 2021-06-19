@@ -1,17 +1,21 @@
 /**
   ******************************************************************************
-  * @file    pushbtn_config.c
+  * @file    rpi_hal_uart_config.h
   * @author  AW           Adrian.Wojcik@put.poznan.pl
   * @version 1.0
-  * @date    13 Jun 2021
-  * @brief   Simple push button driver library configuration file.
+  * @date    Sat 19 Jun 17:48:05 CEST 2021
+  * @brief   Simple hardware abstraction layer for Raspberry Pi serial port
+  *          Configuration header file.
   *
   ******************************************************************************
   */
+#ifndef RPI_HAL_UART_CONFIG_H_
+#define RPI_HAL_UART_CONFIG_H_
   
+/* Config --------------------------------------------------------------------*/
+
 /* Includes ------------------------------------------------------------------*/
-#include "pushbtn_config.h"
-#include "rpi_hal_gpio_config.h"
+#include "rpi_hal_uart.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -19,15 +23,9 @@
 
 /* Macro ---------------------------------------------------------------------*/
 
-/* Private variables ---------------------------------------------------------*/
-
 /* Public variables ----------------------------------------------------------*/
-BTN_HandleTypeDef hbtn = {
-  .Pin = BTN_Pin, .Edge = FALLING_EDGE, .State = GPIO_PIN_SET
-};
+extern UART_Handle_TypeDef huart0;
 
-/* Private function prototypes -----------------------------------------------*/
+/* Public function prototypes ------------------------------------------------*/
 
-/* Private function ----------------------------------------------------------*/
-
-/* Public function -----------------------------------------------------------*/
+#endif /* RPI_HAL_UART_CONFIG_H_*/

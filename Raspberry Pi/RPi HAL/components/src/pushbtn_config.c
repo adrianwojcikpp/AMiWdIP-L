@@ -11,6 +11,7 @@
   
 /* Includes ------------------------------------------------------------------*/
 #include "pushbtn_config.h"
+#include "rpi_hal_gpio_config.h"
 
 /* Typedef -------------------------------------------------------------------*/
 
@@ -22,7 +23,7 @@
 
 /* Public variables ----------------------------------------------------------*/
 BTN_HandleTypeDef hbtn = {
-  .Pin = 16, .Edge = FALLING_EDGE, .State = GPIO_PIN_SET
+  .Pin = BTN_Pin, .Edge = FALLING_EDGE, .State = GPIO_PIN_SET
 };
 
 /* Private function prototypes -----------------------------------------------*/
