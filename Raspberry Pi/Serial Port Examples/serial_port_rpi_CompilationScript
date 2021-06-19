@@ -1,1 +1,0 @@
-gcc serial_port_demo.c serial_port_lib_rpi.c -o demo -std=c99 -Wall -l wiringPi -D RASPBERRY_PI

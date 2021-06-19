@@ -24,6 +24,10 @@
 #include "serial_port_lib.h"
 #include <string.h>
 
+#if defined(DEBUG)
+#include <stdio.h>
+#endif
+
 /* Typedef -------------------------------------------------------------------*/
 
 /* Define --------------------------------------------------------------------*/
@@ -42,12 +46,10 @@
 
 int SERIAL_PORT_Init(SERIAL_PORT_Handle* handle)
 {
-  // Create handle for a serial communications device.
-  // Virtual serial port with https://github.com/freemed/tty0tty
-  *handle = open("/dev/tnt0", O_RDWR);
+  *handle = open("/dev/ttyS0", O_RDWR);
   
   if(*handle < 0)
-    return -1;   // Can't open /dev/tnt0
+    return -1;   // Can't open device
 
   // Create new termios struc, we call it 'tty' for convention
   struct termios tty;
@@ -55,7 +57,9 @@ int SERIAL_PORT_Init(SERIAL_PORT_Handle* handle)
   // Read in existing settings, and handle any error
   if(tcgetattr(*handle , &tty) != 0)
   {
-      // printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
+      #if defined(DEBUG)
+      printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
+      #endif
       return -2;
   }
 
@@ -88,7 +92,9 @@ int SERIAL_PORT_Init(SERIAL_PORT_Handle* handle)
   // Save tty settings, also checking for error
   if(tcsetattr(*handle , TCSANOW, &tty) != 0)	  
   {
-      // printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+      #if defined(DEBUG)
+      printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+      #endif
       return -3;
   }
   
@@ -106,10 +112,20 @@ int SERIAL_PORT_WriteString(SERIAL_PORT_Handle handle, char* str)
    rslt = write(handle, str, strlen(str)); 
    
    if(rslt < 0)
+   {
+     #if defined(DEBUG)
+     printf("Can't write to port [%i]: %s\n", errno, strerror(errno));
+     #endif
      return -1; // Can't write to port
+   }
  
    if(rslt != len)
+   {
+     #if defined(DEBUG)
+     printf("Incorrect message size [%i]: %s\n", errno, strerror(errno));
+     #endif
      return -2; // Incorrect message size
+   }
    
    return 0; // OK
 }
@@ -127,7 +143,12 @@ int SERIAL_PORT_ReadLine(SERIAL_PORT_Handle handle, char* str)
       i++;
 
     if(rslt < 0)
+    {
+      #if defined(DEBUG)
+      printf("Can't read from port [%i]: %s\n", errno, strerror(errno));
+      #endif
       return -1; // Can't read from port
+    }
 
   } while(str[i-1] != '\r'); // Until 'CR' (Enter)
   
