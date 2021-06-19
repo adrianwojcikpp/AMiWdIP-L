@@ -58,6 +58,10 @@ namespace DataGrabberExample.Model
         private static bool ValidateServerCertficate(object sender, 
             X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
+            // If no SSL errors
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+
             // WARNING! : ALL CERTICATES WILL BE VALID! SECURITY RISK! 
             //bool isValid = true;
 
