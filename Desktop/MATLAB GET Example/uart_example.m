@@ -38,19 +38,22 @@ while 1
     
     rawData = fgetl(huart);
     
-    data = jsondecode(rawData);
-    
-    updateplot(pTemp,  data.temperature, t, k, N);
-    updateplot(pPres,  data.pressure,    t, k, N);
-    updateplot(pLight, data.light,       t, k, N);
+    if ~isempty(rawData)
+        data = jsondecode(rawData);
 
-    drawnow;
+        updateplot(pTemp,  data.temperature, t, k, N);
+        updateplot(pPres,  data.pressure,    t, k, N);
+        updateplot(pLight, data.light,       t, k, N);
+
+        drawnow;
+    end
+    
     t = t + ts;
     k = k + 1;
     
-     if ~isempty(h.CurrentCharacter)
-         break
-     end
+    if ~isempty(h.CurrentCharacter)
+        break;
+    end
 end
 
 fclose(huart);

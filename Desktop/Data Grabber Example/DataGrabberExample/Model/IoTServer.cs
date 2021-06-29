@@ -19,8 +19,25 @@ namespace DataGrabberExample.Model
 
         // SHA-1 
         private static readonly byte[] validHashBytes 
-            = HashStringToByteArray("A8:81:16:55:6D:3B:54:CE:11:7B:62:83:AE:52:15:20:95:71:43:4E");
+            = HashStringToByteArray("8F:CD:50:8B:D4:C7:EA:34:C1:A1:FC:63:FE:58:B3:AD:05:C7:CD:FD");
 
+        // Public Key
+        private static readonly byte[] validPublicKey
+            = PublicKeyStringToByteArray("3082010A0282010100D90D582C4DF2E5E4A1" +
+                                         "94AA76C1FC0B6FCBE477F84659E18344D736" +
+                                         "9561EE74E59325CB254DFF7F0FF935CE6D1F" +
+                                         "A18E9E5EC7A2323D19678DCB8105285E9A00" +
+                                         "A6186349E3429C1C3777D3DBB4C18AAFB065" +
+                                         "37DFC826BD7FEDDCD26A4A3709A4B8C7901C" +
+                                         "F7B05C090BA6CD41D4F317955B0656C6841F" +
+                                         "B6E33E362B5E39D176D28EFA33E5EDD25C85" +
+                                         "2DDA969ECA0929C39AD14CF9215B2E910AA1" +
+                                         "5CD747582B88B44563463B5AE5E0109EECD3" +
+                                         "025F2477BCEBFD88B748995835ECFEF60741" +
+                                         "9A9F3D8F3F05553279181B8C93434D403345" +
+                                         "AA084147209799C75232D49FD9C58D66D47D" +
+                                         "7DEB53D031E74955F1E20A94B46D9F12AF33" +
+                                         "BDA9366B5043E914B9F2D6DAD50203010001");
         public IoTServer(string _protocol, string _ip)
         {
             ip = _ip;
@@ -44,6 +61,14 @@ namespace DataGrabberExample.Model
                      .ToArray();
         }
 
+        private static byte[] PublicKeyStringToByteArray(string key)
+        {
+            return Enumerable.Range(0, key.Length)
+                     .Where(x => x % 2 == 0)
+                     .Select(x => Convert.ToByte(key.Substring(x, 2), 16))
+                     .ToArray();
+        }
+
         /**
           * @brief Validates the SSL server certificate.
           * @param[in] sender : An object that contains state information for this validation
@@ -62,11 +87,16 @@ namespace DataGrabberExample.Model
             if (sslPolicyErrors == SslPolicyErrors.None)
                 return true;
 
+            X509Certificate2 cert2 = new X509Certificate2(cert);
+
             // WARNING! : ALL CERTICATES WILL BE VALID! SECURITY RISK! 
             //bool isValid = true;
 
             // Compare SHA-1
-            bool isValid = validHashBytes.SequenceEqual(cert.GetCertHash());
+            //bool isValid = validHashBytes.SequenceEqual(cert2.GetCertHash());
+
+            // Compare public keys
+            bool isValid = validPublicKey.SequenceEqual(cert2.GetPublicKey());
 
             return isValid;
         }
@@ -93,8 +123,6 @@ namespace DataGrabberExample.Model
         public async Task<string> GETwithClient()
         {
             string responseText = null;
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             try
             {
                 using (HttpClient client = new HttpClient())
